@@ -1,0 +1,26 @@
+[credential]
+	helper = cache
+[user]
+	name = Goran
+	email = gospaso@gmail.com
+[init]
+	defaultBranch = main
+[core]
+	pager = diff-so-fancy | less --tabs=4 -RFX
+[interactive]
+	diffFilter = diff-so-fancy --patch
+[branch]
+	# Show most recently changed branches first.
+	sort = -committerdate
+[alias]
+	# Show verbose output about tags, branches or remotes
+	tags = tag -l
+	branches = branch --all
+	remotes = remote --verbose
+	# List aliases.
+	aliases = config --get-regexp alias
+	# Amend the currently staged files to the latest commit.
+	amend = commit --amend --reuse-message=HEAD
+[help]
+	# Automatically correct and execute mistyped commands.
+	autocorrect = 1
