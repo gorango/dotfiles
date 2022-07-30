@@ -1,6 +1,4 @@
-# git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
-# ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
-ZSH_THEME="spaceship"
+ZSH_THEME="robbyrussell"
 
 # eternal history
 HISTSIZE='32768'
@@ -32,15 +30,18 @@ alias l='ls -l'
 alias la='ls -la'
 alias lt='ls --tree'
 
-# terminal commands
+# misc terminal helpers
+
 alias e='exit'
 alias c='code . && e'
 
 # ip + speed
+
 alias myip='curl https://ipinfo.io/json'
 alias speedtest='curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -'
 
 # npm commands
+
 alias s='nr start'
 alias d='nr dev'
 alias b='nr build'
@@ -55,6 +56,7 @@ alias release='nr release'
 alias re='nr release'
 
 # git commands
+
 alias git=hub # Use github/hub
 alias grt='cd "$(git rev-parse --show-toplevel)"' # Go to project root
 alias gs='git status'
@@ -90,6 +92,8 @@ alias gxn='git clean -dn'
 alias gx='git clean -df'
 alias gsha='git rev-parse HEAD | pbcopy'
 alias ghci='gh run list -L 1'
+
+# git fns
 
 function gd() {
   if [[ -z $1 ]] then
