@@ -1,6 +1,7 @@
 {
   "workbench.sideBar.location": "right",
   "workbench.tips.enabled": false,
+  "workbench.startupEditor": "none",
   "workbench.colorTheme": "Atom One Dark",
   "terminal.explorerKind": "external",
   "terminal.integrated.scrollback": 5000,
@@ -8,7 +9,8 @@
   "editor.fontFamily": "Cascadia Code, Input Mono, Fira Code, Ubuntu Mono, monospace",
   "editor.fontLigatures": true,
   "editor.tabSize": 2,
-  "editor.mouseWheelScrollSensitivity": 1.5,
+  "editor.rulers": [80, 120],
+  "editor.mouseWheelScrollSensitivity": 0.75,
   "editor.multiCursorModifier": "ctrlCmd",
   "editor.renderWhitespace": "none",
   "editor.renderControlCharacters": false,
