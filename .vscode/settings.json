@@ -23,5 +23,9 @@
   "explorer.confirmDragAndDrop": false,
   "explorer.confirmDelete": false,
   "breadcrumbs.enabled": true,
-  "zenMode.centerLayout": false
+  "zenMode.centerLayout": false,
+  "[json]": { "editor.defaultFormatter": "vscode.json-language-features" },
+  "github.copilot.enable": { "*": true, "yaml": false, "plaintext": false, "markdown": false },
+  "[terraform]": { "editor.defaultFormatter": "hashicorp.terraform", "editor.formatOnSave": true, "editor.formatOnSaveMode": "file" },
+  "[terraform-vars]": { "editor.defaultFormatter": "hashicorp.terraform", "editor.formatOnSave": true, "editor.formatOnSaveMode": "file" }
 }
