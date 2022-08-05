@@ -125,6 +125,10 @@ function forks() {
   cd ~/f/$1
 }
 
+function dar() {
+  cd ~/a/$1
+}
+
 function dir() {
   mkdir $1 && cd $1
 }
@@ -149,7 +153,7 @@ function clonef() {
   forks && clone "$@" && code . && cd ~2
 }
 
-# utilities 
+# utilities
 
 function serve() {
   if [[ -z $1 ]] then
@@ -193,6 +197,8 @@ alias tf='terraform'
 alias k='kubectl'
 alias h="helm"
 
+[[ $commands[kubectl] ]] && source <(kubectl completion zsh)
+
 kn() {
     if [ "$1" != "" ]; then
 	    kubectl config set-context --current --namespace=$1
@@ -208,3 +214,7 @@ knd() {
 ku() {
     kubectl config unset current-context
 }
+
+# kube-ps1
+# source ~/.oh-my-zsh/custom/kube-ps1.zsh
+PROMPT='$(kube_ps1)'$PROMPT
