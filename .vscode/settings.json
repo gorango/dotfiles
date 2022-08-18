@@ -2,7 +2,6 @@
   "workbench.sideBar.location": "right",
   "workbench.tips.enabled": false,
   "workbench.startupEditor": "none",
-  "workbench.colorTheme": "Atom One Dark",
   "files.trimTrailingWhitespace": true,
   "files.insertFinalNewline": true,
   "files.exclude": {
@@ -38,7 +37,7 @@
   "breadcrumbs.enabled": true,
   "zenMode.centerLayout": false,
   "[json]": { "editor.defaultFormatter": "vscode.json-language-features" },
-  "github.copilot.enable": { "*": true, "yaml": false, "plaintext": false, "markdown": false },
+  "github.copilot.enable": { "*": true },
   "[terraform]": { "editor.defaultFormatter": "hashicorp.terraform", "editor.formatOnSave": true, "editor.formatOnSaveMode": "file" },
   "[terraform-vars]": { "editor.defaultFormatter": "hashicorp.terraform", "editor.formatOnSave": true, "editor.formatOnSaveMode": "file" }
 }
