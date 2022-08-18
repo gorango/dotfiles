@@ -37,6 +37,8 @@ alias lt='ls --tree'
 
 alias e='exit'
 alias c='code . && e'
+alias ca='code ~/a'
+alias cs='code ~/s'
 
 # ip + speed
 
@@ -128,10 +130,6 @@ function forks() {
   cd ~/f/$1
 }
 
-function dar() {
-  cd ~/a/$1
-}
-
 function dir() {
   mkdir $1 && cd $1
 }
@@ -166,7 +164,11 @@ function serve() {
   fi
 }
 
-function extract () {
+function compress() {
+  tar -zcvf "${1}.tar.gz" $1
+}
+
+function extract() {
   if [ -f $1 ]; then
     case $1 in
       *.tar.bz2)  tar -jxvf $1                        ;;
