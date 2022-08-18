@@ -27,6 +27,10 @@ source $ZSH/oh-my-zsh.sh
 # fix sudo - can set root shell to `/bin/zsh` with `sudo chsh`
 alias sudo='sudo '
 
+# antibody
+source <(antibody init)
+antibody bundle < ~/.zsh_plugins.txt
+
 # lsd
 alias ls='lsd'
 alias l='ls -l'
@@ -201,6 +205,9 @@ function colormap() {
 alias tf='terraform'
 alias k='kubectl'
 alias h="helm"
+alias kctx='kubectx'
+alias kns='kubens'
+alias kc='k9s'
 
 [[ $commands[kubectl] ]] && source <(kubectl completion zsh)
 
