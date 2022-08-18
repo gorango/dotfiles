@@ -24,6 +24,9 @@ plugins=(
 ZSH=$HOME/.oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
+# fix sudo - can set root shell to `/bin/zsh` with `sudo chsh`
+alias sudo='sudo '
+
 # lsd
 alias ls='lsd'
 alias l='ls -l'
