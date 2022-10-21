@@ -202,6 +202,8 @@ function colormap() {
 
 # devops
 
+export DOCKER_BUILDKIT=1
+
 alias tf='terraform'
 alias k='kubectl'
 alias h="helm"
