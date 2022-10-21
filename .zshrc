@@ -138,6 +138,13 @@ function dir() {
   mkdir $1 && cd $1
 }
 
+function cpe() {
+  root=$(pwd)
+  cd $1
+  cp -r `ls . -A | grep -v "$3"` $root/$2
+  $root
+}
+
 function clone() {
   if [[ -z $2 ]] then
     hub clone "$@" && cd "$(basename "$1" .git)"
