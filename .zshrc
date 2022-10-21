@@ -147,15 +147,15 @@ function clone() {
 }
 
 function clonem() {
-  m && clone "$@" && code . && cd ~2
+  m && clone "$@" && code . && exit
 }
 
 function cloner() {
-  repros && clone "$@" && code . && cd ~2
+  repros && clone "$@" && code . && exit
 }
 
 function clonef() {
-  forks && clone "$@" && code . && cd ~2
+  forks && clone "$@" && code . && exit
 }
 
 # utilities
