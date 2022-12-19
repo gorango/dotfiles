@@ -101,6 +101,7 @@ alias gxn='git clean -dn'
 alias gx='git clean -df'
 alias gsha='git rev-parse HEAD | pbcopy'
 alias ghci='gh run list -L 1'
+alias ac='auto-commit'
 
 # git fns
 
