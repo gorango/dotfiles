@@ -86,3 +86,6 @@ export PATH=$PATH:/usr/local/go/bin
 
 # kubectl krew
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+# surreal db
+export PATH=/home/goga/.surrealdb:$PATH
