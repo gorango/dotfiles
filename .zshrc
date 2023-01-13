@@ -240,3 +240,7 @@ ku() {
 # kube-ps1
 # source ~/.oh-my-zsh/custom/kube-ps1.zsh
 PROMPT='$(kube_ps1)'$PROMPT
+
+# supabase in project
+alias supabase='node_modules/.bin/supabase'
+alias sb='supabase'
