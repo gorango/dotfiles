@@ -1,7 +1,0 @@
-@antfu/ni
-@jarred/git-peek
-eslint
-nodemon
-pm2
-ts-node
-typescript
