@@ -30,6 +30,10 @@ function forks() {
   cd ~/f/$1
 }
 
+function work() {
+  cd ~/w/$1
+}
+
 function dir() {
   mkdir $1 && cd $1
 }
@@ -50,15 +54,19 @@ function clone() {
 }
 
 function clonem() {
-  m && clone "$@" && code . && exit
+  m && clone "$@" && cd $_
 }
 
 function cloner() {
-  repros && clone "$@" && code . && exit
+  repros && clone "$@" && cd $_
 }
 
 function clonef() {
-  forks && clone "$@" && code . && exit
+  forks && clone "$@" && cd $_
+}
+
+function clonew() {
+  work && clone "$@" && cd $_
 }
 
 # utilities

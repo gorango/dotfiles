@@ -24,16 +24,16 @@ antibody bundle < ~/.zsh_plugins.txt # https://github.com/ahmetb/kubectx
 ZSH=$HOME/.oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
-# kensington trackball config
-eval "~/.device/trackball.sh"
+eval "$(zoxide init zsh)" # zoxide
+eval "$(~/.rbenv/bin/rbenv init - zsh)" # rbenv
 
 # fix sudo - can set root shell to `/bin/zsh` with `sudo chsh`
 alias sudo='sudo '
 
-# nvm
+# neovim
 alias vim='nvim'
 alias vi='nvim'
-alias v='nvim .'
+alias v='nvim'
 
 # lsd
 alias ls='lsd'
@@ -48,16 +48,10 @@ alias ca='code ~/a'
 alias cs='code ~/s'
 
 # npm commands
-alias s='nr start'
 alias d='nr dev'
-alias b='nr build'
-alias bw='nr build --watch'
-alias t='nr test'
-alias tw='nr test --watch'
 alias lint='nr lint'
 alias lintf='nr lint --fix'
 alias release='nr release'
-alias re='nr release'
 
 # git commands
 alias git=hub # Use github/hub
@@ -83,6 +77,7 @@ alias gl='git log'
 alias glo='git log --oneline --graph'
 alias grh='git reset HEAD'
 alias grh1='git reset HEAD~1'
+alias gap='git add -p'
 alias ga='git add'
 alias gA='git add -A'
 alias gc='git commit'
