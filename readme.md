@@ -37,7 +37,7 @@ git clone https://github.com/agkozak/zsh-z $ZSH_CUSTOM/plugins/zsh-z
 ```sh
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 nvm install --lts
-npm i -g @antfu/ni @jarred/git-peek eslint nodemon pm2 typescript
+npm i -g @antfu/ni @jarred/git-peek eslint nodemon pm2 typescript yarn
 ```
 </details>
 
