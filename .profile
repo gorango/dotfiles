@@ -1,14 +1,3 @@
-# ~/.profile: executed by the command interpreter for login shells.
-# This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login exists.
-
-# if running bash
-if [ -n "$BASH_VERSION" ]; then
-    # include .bashrc if it exists
-    if [ -f "$HOME/.bashrc" ]; then
-        . "$HOME/.bashrc"
-    fi
-fi
-
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
@@ -18,32 +7,40 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-# Preferred editor for local and remote sessions
+# preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
   export EDITOR='vim'
 fi
 
-# Node Version Manager
-export NVM_LAZY_LOAD=true
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# kensington trackball config
+eval "~/.device/trackball.sh"
 
-# npm@7 use npx default yes to download
-export NPM_CONFIG_YES=true
-
-# pnpm
-export PNPM_HOME="/home/goga/.local/share/pnpm"
-export PATH="$PNPM_HOME:$PATH"
-
-# Yarn global location
-export PATH="$(yarn global bin --offline):$PATH"
-
-# Nix
-if [ -e /home/goga/.nix-profile/etc/profile.d/nix.sh ]; then . /home/goga/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+# nix
+if [ -e /home/go/.nix-profile/etc/profile.d/nix.sh ]; then . /home/go/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
 # rust
 . "$HOME/.cargo/env"
 
+# go
+export PATH=$PATH:/usr/local/go/bin
+
+# pyenv
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+# nvm
+export NVM_LAZY_LOAD=true
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export NPM_CONFIG_YES=true # npx default yes to download
+
+# pnpm
+export PNPM_HOME="/home/go/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+
+# yarn
+export PATH="$(yarn global bin --offline):$PATH"
