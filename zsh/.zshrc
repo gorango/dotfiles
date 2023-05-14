@@ -8,9 +8,6 @@ HISTFILE=~/.zsh_history
 GIT_TERMINAL_PROMPT=1 # gh auth
 GDK_SCALE=1 # 4k display in i3
 
-ZSH=$HOME/.oh-my-zsh
-source $ZSH/oh-my-zsh.sh
-
 plugins=(
 	git
 	zsh-autosuggestions      # https://github.com/zsh-users/zsh-autosuggestions
@@ -22,6 +19,10 @@ plugins=(
 # antibody
 source <(antibody init)
 antibody bundle < ~/.zsh_plugins.txt # https://github.com/ahmetb/kubectx
+
+#source after plugins
+ZSH=$HOME/.oh-my-zsh
+source $ZSH/oh-my-zsh.sh
 
 # kensington trackball config
 eval "~/.device/trackball.sh"
