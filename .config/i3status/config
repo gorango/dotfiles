@@ -7,12 +7,12 @@
 # If the above line is not correctly displayed, fix your editor first!
 
 general {
-        colors = true
-        interval = 5
-        output_format = "i3bar"
-        color_good = "#50FA7B"
-        color_degraded = "#F1FA8C"
-        color_bad = "#FF5555"
+	colors = true
+	interval = 5
+	output_format = "i3bar"
+	color_good = "#50FA7B"
+	color_degraded = "#F1FA8C"
+	color_bad = "#FF5555"
 }
 
 order += "disk /"
@@ -21,17 +21,17 @@ order += "load"
 order += "tztime local"
 
 battery all {
-        format = "%status %percentage %remaining"
+	format = "%status %percentage %remaining"
 }
 
 tztime local {
-        format = "%Y-%m-%d %H:%M:%S"
+	format = "%Y-%m-%d %H:%M:%S"
 }
 
 load {
-        format = "%1min"
+	format = "%1min"
 }
 
 disk "/" {
-        format = "%avail"
+	format = "%avail"
 }
