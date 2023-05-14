@@ -47,7 +47,3 @@ if [ -e /home/goga/.nix-profile/etc/profile.d/nix.sh ]; then . /home/goga/.nix-p
 # rust
 . "$HOME/.cargo/env"
 
-# ruby
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
