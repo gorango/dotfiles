@@ -10,7 +10,7 @@
 [interactive]
 	diffFilter = diff-so-fancy --patch
 [branch]
-	# Show most recently changed branches first.
+	# Show most recently changed branches first
 	sort = -committerdate
 [alias]
 	# Show verbose output about tags, branches or remotes
@@ -19,8 +19,8 @@
 	remotes = remote --verbose
 	# List aliases.
 	aliases = config --get-regexp alias
-	# Amend the currently staged files to the latest commit.
+	# Amend the currently staged files to the latest commit
 	amend = commit --amend --reuse-message=HEAD
 [help]
-	# Automatically correct and execute mistyped commands.
+	# Automatically correct and execute mistyped commands
 	autocorrect = 1
