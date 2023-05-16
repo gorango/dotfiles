@@ -48,10 +48,10 @@ bindsym $mod+d exec dmenu_run
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym $mod+semicolon focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+period focus right
+# bindsym $mod+semicolon focus left
+# bindsym $mod+j focus down
+# bindsym $mod+k focus up
+# bindsym $mod+period focus right
 
 # change using cursor keys:
 bindsym $mod+Left focus left
@@ -60,10 +60,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+semicolon move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+period move right
+# bindsym $mod+Shift+semicolon move left
+# bindsym $mod+Shift+j move down
+# bindsym $mod+Shift+k move up
+# bindsym $mod+Shift+period move right
 
 # move using cursor keys:
 bindsym $mod+Shift+Left move left
@@ -221,11 +221,14 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
+# Suspend
+bindsym $mod+Shift+period exec systemctl suspend
+
 # xrandr conf
 exec_always autorandr --change
 
 # workspace assignments
 workspace 1 output DP3
-workspace 2 output eDPI
-assign [class="brave-browser"] $ws2
-assign [class="gitkraken"] $ws4
+workspace 9 output eDPI
+# assign [class="brave-browser"] $ws2
+# assign [class="gitkraken"] $ws4
