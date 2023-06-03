@@ -24,7 +24,7 @@ antibody bundle < ~/.zsh_plugins.txt # https://github.com/ahmetb/kubectx
 ZSH=$HOME/.oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
-eval "$(zoxide init zsh)" # zoxide
+eval "$(z init zsh)" # zoxide
 eval "$(~/.rbenv/bin/rbenv init - zsh)" # rbenv
 
 # fix sudo - can set root shell to `/bin/zsh` with `sudo chsh`
