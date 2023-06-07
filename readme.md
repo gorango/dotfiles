@@ -137,6 +137,51 @@ sudo apt install \
 ```sh
 go install github.com/jesseduffield/lazygit@latest
 ```
+
+### [terraform](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli)
+
+```sh
+wget -O- https://apt.releases.hashicorp.com/gpg | \
+gpg --dearmor | \
+sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
+```
+```sh
+echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] \
+https://apt.releases.hashicorp.com $(lsb_release -cs) main" | \
+sudo tee /etc/apt/sources.list.d/hashicorp.list
+```
+```sh
+sudo apt update
+sudo apt-get install terraform
+```
+
+### [helm](https://helm.sh/docs/intro/install/)
+
+```sh
+curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+```
+
+### [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-kubectl-binary-with-curl-on-linux)
+
+```sh
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+kubectl version --client
+```
+
+### [kubectx+kubens](https://github.com/ahmetb/kubectx#manual-installation-macos-and-linux)
+
+```sh
+sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx
+sudo ln -s /opt/kubectx/kubectx /usr/local/bin/kubectx
+sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens
+```
+
+### [k9s](https://github.com/derailed/k9s#installation)
+
+```sh
+go install github.com/derailed/k9s@latest
+```
 </details>
 
 ---
