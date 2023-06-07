@@ -1,33 +1,23 @@
-# git fns
-
-function gd() {
-  if [[ -z $1 ]] then
-    git diff --color | diff-so-fancy
-  else
-    git diff --color $1 | diff-so-fancy
-  fi
-}
-
-function pr() {
-  if [ $1 = "ls" ]; then
-    gh pr list
-  else
-    gh pr checkout $1
-  fi
-}
-
 # directories
 
 function m() {
   cd ~/m/$1
 }
 
-function repros() {
-  cd ~/r/$1
+function mine() {
+  cd ~/m/$1
 }
 
 function forks() {
   cd ~/f/$1
+}
+
+function repros() {
+  cd ~/r/$1
+}
+
+function sand() {
+  cd ~/s/$1
 }
 
 function work() {

@@ -1,4 +1,5 @@
 # git commands
+
 alias git=hub # Use github/hub
 alias grt='cd "$(git rev-parse --show-toplevel)"' # Go to project root
 alias gs='git status'
@@ -37,3 +38,20 @@ alias gsha='git rev-parse HEAD | pbcopy'
 alias ghci='gh run list -L 1'
 alias ac='auto-commit'
 
+# git fns
+
+function gd() {
+  if [[ -z $1 ]] then
+    git diff --color | diff-so-fancy
+  else
+    git diff --color $1 | diff-so-fancy
+  fi
+}
+
+function pr() {
+  if [ $1 = "ls" ]; then
+    gh pr list
+  else
+    gh pr checkout $1
+  fi
+}
