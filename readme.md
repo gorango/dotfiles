@@ -1,37 +1,103 @@
 # dotfiles
 
-## Setup
+Debian workbench copy-pasta
 
 <details>
-<summary>dirs</summary>
+<summary><code>pkgs</code></summary>
 
-```sh
-mkdir ~/m ~/f ~/r ~/s ~/w
-git clone https://github.com/gorango/dotfiles ~/m/dotfiles
-```
-</details>
-
----
-
-## Install
-
-<details>
-<summary>init</summary>
+<hr>
 
 ```sh
 sudo apt install \
-	curl git hub ripgrep xclip rename tmux fzf lsd tree neovim neofetch \
-	ffmpeg vlc feh shotwell light xbacklight redshift autorandr
+curl git hub gh ripgrep xclip rename tmux fzf lsd tree neovim neofetch \
+ffmpeg vlc feh shotwell light xbacklight redshift autorandr
 ```
+```sh
+gh auth login
+```
+<br>
 </details>
 
 <details>
-<summary>terminal</summary>
+<summary><code>dirs</code></summary>
+
+<hr>
+
+```sh
+mkdir ~/m ~/f ~/r ~/s ~/w # mine, forks, repros, sandbox, work
+```
+```sh
+gh repo clone gorango/dotfiles ~/m/dotfiles
+```
+<br>
+</details>
+
+<details>
+<summary><code>apps</code></summary>
+
+<hr>
+
+- [brave](#brave)
+- [code](#code)
+- [gitkraken](#gitkraken)
+
+<hr>
+
+### [brave](https://brave.com/linux/)
+
+```sh
+sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
+sudo apt install brave-browser
+```
+
+### [code](https://code.visualstudio.com/Download)
+
+```sh
+wget --no-verbose -O /tmp/code.deb https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64
+sudo apt install /tmp/code.deb
+rm /tmp/code.deb
+```
+
+### [gitkraken](https://help.gitkraken.com/gitkraken-client/how-to-install/#deb)
+
+```sh
+wget --no-verbose -O /tmp/gitkraken.deb https://release.gitkraken.com/linux/gitkraken-amd64.deb
+sudo apt install /tmp/gitkraken.deb
+rm /tmp/gitkraken.deb
+```
+
+### chrome.96
+
+```sh
+wget --no-verbose -O /tmp/chrome.deb https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_96.0.4664.93-1_amd64.deb
+apt install -y /tmp/chrome.deb
+rm /tmp/chrome.deb
+```
+<br>
+</details>
+
+<details>
+<summary><code>term</code></summary>
+
+<hr>
+
+- [zsh](#zsh)
+- [antibody](#antibody)
+- [zsh plugins](#zsh-plugins)
+- [zoxide](#zoxide)
+
+<hr>
 
 ### [zsh](https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH)
 
 ```sh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+
+### [antibody](https://getantibody.github.io/install/)
+
+```sh
 curl -sfL git.io/antibody | sudo sh -s - -b /usr/local/bin
 ```
 
@@ -50,23 +116,40 @@ git clone https://github.com/agkozak/zsh-z $ZSH_CUSTOM/plugins/zsh-z
 curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
 rm ~/.zcompdump*; compinit
 ```
+<br>
 </details>
 
 <details>
-<summary>i3wm</summary>
+<summary><code>i3wm</code></summary>
+
+<hr>
+
+- [i3](#i3)
+- [i3-gnome](#i3-gnome)
+- [theme](#theme)
+
+<hr>
+
+### [i3](https://i3wm.org/docs/)
+
+```sh
+sudo apt install i3
+```
 
 ### [i3-gnome](https://github.com/i3-gnome/i3-gnome)
 
 ```sh
-sudo apt install i3
-git clone https://github.com/i3-gnome/i3-gnome.git ~/Downloads
-cd ~/Downloads/i3-gnome
+git clone https://github.com/i3-gnome/i3-gnome.git ~/Downloads && cd $_
 sudo make install
 ```
+
+### theme
 
 ```sh
 sudo update-alternatives --config gdm3-theme.gresource
 # select gnome-shell-theme.gresource
+```
+```sh
 sudo vim /etc/gdm3/greeter.dconf-defaults
 # [org/gnome/login-screen]
 # logo=''
@@ -76,24 +159,21 @@ sudo vim /etc/gdm3/greeter.dconf-defaults
 set org.gnome.Terminal.Legacy.Settings headerbar false
 set org.gnome.Terminal.Legacy.Settings confirm-close false
 ```
+<br>
 </details>
 
 <details>
-<summary>languages</summary>
+<summary><code>lang</code></summary>
 
-### rust
+<hr>
 
-```sh
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-```
+- [python](#python-pyenv)
+- [node](#node-nvm)
+- [ruby](#ruby-rbenv)
+- [rust](#rust)
+- [go](#go)
 
-### go
-
-```sh
-cd ~/Downloads
-curl -OL https://golang.org/dl/go1.20.4.linux-amd64.tar.gz
-rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.20.4.linux-amd64.tar.gz
-```
+<hr>
 
 ### python (pyenv)
 
@@ -108,7 +188,6 @@ pyenv global 3.10
 ```sh
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 nvm install --lts
-# node globals
 npm i -g @antfu/ni diff-so-fancy eslint nodemon pm2 typescript yarn
 ```
 
@@ -119,17 +198,41 @@ sudo apt install rbenv
 rbenv install 2.6.10
 rbenv global 2.6.10
 ```
+
+### rust
+
+```sh
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+
+### go
+
+```sh
+rm -rf /usr/local/go
+curl https://golang.org/dl/go1.20.4.linux-amd64.tar.gz | sudo tar -C /usr/local -xzf -
+```
+<br>
 </details>
 
 <details>
-<summary>utilities</summary>
+<summary><code>util</code></summary>
+
+<hr>
+
+- [docker](#docker)
+- [lazygit](#lazygit)
+- [terraform](#terraform)
+- [helm](#helm)
+- [kubernetes](#kubernetes)
+
+<hr>
 
 ### docker
 
 ```sh
 sudo apt install \
-	build-essential ca-certificates software-properties-common gnupg lsb-release apt-transport-https \
-	docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+build-essential ca-certificates software-properties-common gnupg lsb-release apt-transport-https \
+docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 
 ### lazygit
@@ -151,7 +254,6 @@ https://apt.releases.hashicorp.com $(lsb_release -cs) main" | \
 sudo tee /etc/apt/sources.list.d/hashicorp.list
 ```
 ```sh
-sudo apt update
 sudo apt-get install terraform
 ```
 
@@ -161,7 +263,13 @@ sudo apt-get install terraform
 curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 ```
 
-### [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-kubectl-binary-with-curl-on-linux)
+
+##### TOC:
+- [kubectl](#kubectl)
+- [kubectx](#kubectxkubens)
+- [k9s](#k9s)
+
+#### [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-kubectl-binary-with-curl-on-linux)
 
 ```sh
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
@@ -169,7 +277,7 @@ sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 kubectl version --client
 ```
 
-### [kubectx+kubens](https://github.com/ahmetb/kubectx#manual-installation-macos-and-linux)
+#### [kubectx+kubens](https://github.com/ahmetb/kubectx#manual-installation-macos-and-linux)
 
 ```sh
 sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx
@@ -177,21 +285,20 @@ sudo ln -s /opt/kubectx/kubectx /usr/local/bin/kubectx
 sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens
 ```
 
-### [k9s](https://github.com/derailed/k9s#installation)
+#### [k9s](https://github.com/derailed/k9s#installation)
 
 ```sh
 go install github.com/derailed/k9s@latest
 ```
+<br>
 </details>
 
----
-
-## Configs
-
 <details>
-<summary>symlinks</summary>
+<summary><code>link</code></summary>
 
-`~`
+<hr>
+
+### `$HOME`
 
 ```sh
 ln -sf ~/m/dotfiles/.gitconfig ~/.gitconfig
@@ -205,7 +312,7 @@ ln -sf ~/m/dotfiles/zsh/.zshrc ~/.zshrc
 ln -s ~/m/dotfiles/zsh/custom/* ~/.oh-my-zsh/custom
 ```
 
-`~/.config`
+### `$HOME/.config`
 
 ```sh
 ln -sf ~/m/dotfiles/.config/i3 ~/.config/i3
@@ -216,4 +323,5 @@ ln -sf ~/m/dotfiles/.config/autostart ~/.config/autostart
 ln -sf ~/m/dotfiles/.config/Code/User/settings.json ~/.config/Code/User/settings.json
 ln -sf ~/m/dotfiles/.config/Code/User/keybindings.json ~/.config/Code/User/keybindings.json
 ```
+<br>
 </details>
