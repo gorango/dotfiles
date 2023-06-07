@@ -1,6 +1,6 @@
 # dotfiles
 
-### Setup
+## Setup
 
 <details>
 <summary>dirs</summary>
@@ -13,7 +13,7 @@ git clone https://github.com/gorango/dotfiles ~/m/dotfiles
 
 ---
 
-### Install
+## Install
 
 <details>
 <summary>init</summary>
@@ -28,14 +28,14 @@ sudo apt install \
 <details>
 <summary>terminal</summary>
 
-zsh
+### [zsh](https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH)
 
 ```sh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 curl -sfL git.io/antibody | sudo sh -s - -b /usr/local/bin
 ```
 
-zsh plugins
+### zsh plugins
 
 ```sh
 git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
@@ -44,7 +44,7 @@ git clone https://github.com/lukechilds/zsh-nvm $ZSH_CUSTOM/plugins/zsh-nvm
 git clone https://github.com/agkozak/zsh-z $ZSH_CUSTOM/plugins/zsh-z
 ```
 
-zoxide
+### [zoxide](https://github.com/ajeetdsouza/zoxide)
 
 ```sh
 curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
@@ -54,6 +54,8 @@ rm ~/.zcompdump*; compinit
 
 <details>
 <summary>i3wm</summary>
+
+### [i3-gnome](https://github.com/i3-gnome/i3-gnome)
 
 ```sh
 sudo apt install i3
@@ -79,21 +81,21 @@ set org.gnome.Terminal.Legacy.Settings confirm-close false
 <details>
 <summary>languages</summary>
 
-rust
+### rust
 
 ```sh
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
-go
+### go
 
 ```sh
 cd ~/Downloads
 curl -OL https://golang.org/dl/go1.20.4.linux-amd64.tar.gz
-rm -rf /usr/local/go && tar -C /usr/local -xzf go1.20.4.linux-amd64.tar.gz
+rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.20.4.linux-amd64.tar.gz
 ```
 
-python (pyenv)
+### python (pyenv)
 
 ```sh
 curl https://pyenv.run | bash
@@ -101,7 +103,7 @@ pyenv install -v 3.10
 pyenv global 3.10
 ```
 
-node (nvm)
+### node (nvm)
 
 ```sh
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
@@ -110,7 +112,7 @@ nvm install --lts
 npm i -g @antfu/ni diff-so-fancy eslint nodemon pm2 typescript yarn
 ```
 
-ruby (rbenv)
+### ruby (rbenv)
 
 ```sh
 sudo apt install rbenv
@@ -122,7 +124,7 @@ rbenv global 2.6.10
 <details>
 <summary>utilities</summary>
 
-docker
+### docker
 
 ```sh
 sudo apt install \
@@ -130,7 +132,7 @@ sudo apt install \
 	docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 
-lazygit
+### lazygit
 
 ```sh
 go install github.com/jesseduffield/lazygit@latest
@@ -139,7 +141,7 @@ go install github.com/jesseduffield/lazygit@latest
 
 ---
 
-### Configs
+## Configs
 
 <details>
 <summary>symlinks</summary>
