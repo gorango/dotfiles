@@ -78,7 +78,7 @@ rm /tmp/chrome.deb
 </details>
 
 <details>
-<summary><code>term</code></summary>
+<summary><code>cli</code></summary>
 
 <hr>
 
@@ -120,7 +120,7 @@ rm ~/.zcompdump*; compinit
 </details>
 
 <details>
-<summary><code>i3wm</code></summary>
+<summary><code>wm</code></summary>
 
 <hr>
 
@@ -163,7 +163,7 @@ set org.gnome.Terminal.Legacy.Settings confirm-close false
 </details>
 
 <details>
-<summary><code>lang</code></summary>
+<summary><code>langs</code></summary>
 
 <hr>
 
@@ -215,7 +215,7 @@ curl https://golang.org/dl/go1.20.4.linux-amd64.tar.gz | sudo tar -C /usr/local 
 </details>
 
 <details>
-<summary><code>util</code></summary>
+<summary><code>utils</code></summary>
 
 <hr>
 
@@ -294,7 +294,7 @@ go install github.com/derailed/k9s@latest
 </details>
 
 <details>
-<summary><code>link</code></summary>
+<summary><code>links</code></summary>
 
 <hr>
 
