@@ -1,0 +1,29 @@
+[shortcuts]
+    # Close notification.
+    close = ctrl+space
+
+    # Close all notifications.
+    close_all = ctrl+shift+space
+
+    # Redisplay last message(s).
+    #history = ctrl+grave
+    history = mod4+ctrl+grave
+
+[urgency_low]
+    background = "#222222"
+    foreground = "#888888"
+    timeout = 10
+    #icon = /path/to/icon
+
+[urgency_normal]
+    background = "#285577"
+    foreground = "#ffffff"
+    timeout = 10
+    #icon = /path/to/icon
+
+[urgency_critical]
+    background = "#900000"
+    foreground = "#ffffff"
+    frame_color = "#ff0000"
+    timeout = 0
+    #icon = /path/to/icon
