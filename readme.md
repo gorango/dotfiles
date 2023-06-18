@@ -10,7 +10,7 @@ Debian workbench copy-pasta
 ```sh
 sudo apt install \
 curl git hub gh ripgrep xclip rename tmux fzf lsd tree neovim neofetch \
-ffmpeg vlc feh shotwell light xbacklight redshift autorandr
+ffmpeg cloc vlc feh shotwell light xbacklight redshift autorandr
 ```
 ```sh
 gh auth login
@@ -188,7 +188,7 @@ pyenv global 3.10
 ```sh
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 nvm install --lts
-npm i -g @antfu/ni diff-so-fancy eslint nodemon pm2 typescript yarn
+npm i -g yarn nodemon pm2 tldr typescript eslint @antfu/ni diff-so-fancy
 ```
 
 ### ruby (rbenv)
