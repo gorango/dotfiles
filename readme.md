@@ -215,6 +215,37 @@ curl https://golang.org/dl/go1.20.4.linux-amd64.tar.gz | sudo tar -C /usr/local 
 </details>
 
 <details>
+<summary><code>dbs</code></summary>
+
+<hr>
+
+- [redis](#redis)
+- [postgres](#postgres)
+
+<hr>
+
+### redis
+
+```sh
+curl -fsSL https://packages.redis.io/gpg | sudo gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/redis.list
+sudo apt-get update
+sudo apt-get install redis
+```
+
+### postgres
+
+```sh
+sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+sudo apt-get update
+sudo apt install -y postgresql
+```
+
+<br>
+</details>
+
+<details>
 <summary><code>utils</code></summary>
 
 <hr>
