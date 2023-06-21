@@ -28,14 +28,13 @@ ms-python.python
 ms-toolsai.jupyter
 ms-toolsai.jupyter-keymap
 ms-toolsai.jupyter-renderers
-msjsdiag.debugger-for-chrome
 npxms.hide-gitignored
 Prisma.prisma
 redhat.vscode-yaml
-silvenon.mdx
 stormwarning.json-template
 stylelint.vscode-stylelint
 Tyriar.lorem-ipsum
+unifiedjs.vscode-mdx
 Vue.volar
 Vue.vscode-typescript-vue-plugin
 whatwedo.twig
