@@ -8,7 +8,7 @@ Debian workbench copy-pasta
 <hr>
 
 ```sh
-sudo apt install \
+sudo apt install -y \
 curl git hub gh ripgrep xclip rename tmux fzf lsd tree neovim neofetch \
 ffmpeg cloc vlc feh shotwell light xbacklight redshift autorandr
 ```
@@ -48,14 +48,14 @@ gh repo clone gorango/dotfiles ~/m/dotfiles
 ```sh
 sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
 echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
-sudo apt install brave-browser
+sudo apt install -y brave-browser
 ```
 
 ### [code](https://code.visualstudio.com/Download)
 
 ```sh
 wget --no-verbose -O /tmp/code.deb https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64
-sudo apt install /tmp/code.deb
+sudo apt install -y /tmp/code.deb
 rm /tmp/code.deb
 ```
 
@@ -63,7 +63,7 @@ rm /tmp/code.deb
 
 ```sh
 wget --no-verbose -O /tmp/gitkraken.deb https://release.gitkraken.com/linux/gitkraken-amd64.deb
-sudo apt install /tmp/gitkraken.deb
+sudo apt install -y /tmp/gitkraken.deb
 rm /tmp/gitkraken.deb
 ```
 
@@ -141,7 +141,7 @@ rm ~/.zcompdump*; compinit
 ### [i3](https://i3wm.org/docs/)
 
 ```sh
-sudo apt install i3
+sudo apt install -y i3
 ```
 
 ### [i3-gnome](https://github.com/i3-gnome/i3-gnome)
@@ -202,7 +202,7 @@ npm i -g yarn nodemon pm2 tldr typescript eslint @antfu/ni diff-so-fancy
 ### ruby (rbenv)
 
 ```sh
-sudo apt install rbenv
+sudo apt install -y rbenv
 rbenv install 2.6.10
 rbenv global 2.6.10
 ```
@@ -269,7 +269,7 @@ sudo apt install -y postgresql
 ### docker
 
 ```sh
-sudo apt install \
+sudo apt install -y \
 build-essential ca-certificates software-properties-common gnupg lsb-release apt-transport-https \
 docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
