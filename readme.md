@@ -70,9 +70,17 @@ rm /tmp/gitkraken.deb
 ### chrome.96
 
 ```sh
-wget --no-verbose -O /tmp/chrome.deb https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_96.0.4664.93-1_amd64.deb
-apt install -y /tmp/chrome.deb
+wget --no-verbose -O /tmp/chrome.deb https://www.slimjet.com/chrome/download-chrome.php?file=files%2F90.0.4430.72%2Fgoogle-chrome-stable_current_amd64.deb
+sudo apt install -y /tmp/chrome.deb
 rm /tmp/chrome.deb
+```
+
+```sh
+sudo apt-mark hold google-chrome-stable # prevent auto-updates
+```
+
+```sh
+google-chrome --simulate-outdated-no-au='2099/12/31' >/dev/null 2>&1 & # open without update prompts
 ```
 <br>
 </details>

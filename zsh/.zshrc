@@ -54,3 +54,6 @@ alias release='nr release'
 # supabase
 alias supabase='node_modules/.bin/supabase'
 alias sb='supabase'
+
+# chrome
+alias cs='google-chrome --simulate-outdated-no-au="2099/12/31" >/dev/null 2>&1 & disown && exit'
