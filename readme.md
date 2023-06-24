@@ -67,11 +67,11 @@ sudo apt install -y /tmp/gitkraken.deb
 rm /tmp/gitkraken.deb
 ```
 
-### chrome.96
+### chrome.90
 
 ```sh
 wget --no-verbose -O /tmp/chrome.deb https://www.slimjet.com/chrome/download-chrome.php?file=files%2F90.0.4430.72%2Fgoogle-chrome-stable_current_amd64.deb
-sudo apt install -y /tmp/chrome.deb
+sudo apt install -y --allow-downgrades /tmp/chrome.deb
 rm /tmp/chrome.deb
 ```
 
