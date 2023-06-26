@@ -33,6 +33,24 @@ gh repo clone gorango/dotfiles ~/m/dotfiles
 </details>
 
 <details>
+<summary><code>gh</code></summary>
+
+Setup SSH for GitHub.
+
+```sh
+ssh-keygen -t ed25519 -C "gospaso@gmail.com" -f gh
+ssh-add gh
+```
+
+Add public key in [GitHub Settings](https://github.com/settings/ssh/new):
+
+```sh
+cat gh.pub
+```
+
+</details>
+
+<details>
 <summary><code>apps</code></summary>
 
 <hr>
