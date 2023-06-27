@@ -3,18 +3,28 @@
 Debian workbench copy-pasta
 
 <details>
-<summary><code>pkgs</code></summary>
+<summary><code>init</code></summary>
 
 <hr>
 
 ```sh
 sudo apt install -y \
-curl git hub gh ripgrep xclip rename tmux fzf lsd tree neovim neofetch \
-ffmpeg cloc vlc feh shotwell light xbacklight redshift autorandr
+	curl ripgrep xclip tmux neovim fzf lsd tree rename neofetch \
+	ffmpeg cloc vlc feh shotwell light xbacklight redshift autorandr \
+	git hub gh
 ```
 ```sh
 gh auth login
 ```
+```sh
+~/.ssh
+ssh-keygen -t ed25519 -C "gospaso@gmail.com" -f gh
+ssh-add gh
+cat gh.pub
+```
+
+[add to gh](https://github.com/settings/ssh/new)
+
 <br>
 </details>
 
@@ -29,25 +39,8 @@ mkdir ~/m ~/f ~/r ~/s ~/w # mine, forks, repros, sandbox, work
 ```sh
 gh repo clone gorango/dotfiles ~/m/dotfiles
 ```
+
 <br>
-</details>
-
-<details>
-<summary><code>gh</code></summary>
-
-Setup SSH for GitHub.
-
-```sh
-ssh-keygen -t ed25519 -C "gospaso@gmail.com" -f gh
-ssh-add gh
-```
-
-Add public key in [GitHub Settings](https://github.com/settings/ssh/new):
-
-```sh
-cat gh.pub
-```
-
 </details>
 
 <details>
