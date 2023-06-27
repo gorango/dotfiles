@@ -51,6 +51,8 @@ gh repo clone gorango/dotfiles ~/m/dotfiles
 - [brave](#brave)
 - [code](#code)
 - [gitkraken](#gitkraken)
+- [chrome](#chrome90)
+- [vlc](#vlc)
 
 <hr>
 
@@ -93,6 +95,15 @@ sudo apt-mark hold google-chrome-stable # prevent auto-updates
 ```sh
 google-chrome --simulate-outdated-no-au='2099/12/31' >/dev/null 2>&1 & # open without update prompts
 ```
+
+### vlc [?](https://askubuntu.com/a/263308)
+
+```
+Tools > Preferences
+
+Display > Output = X11 video output (XCB)
+```
+
 <br>
 </details>
 
