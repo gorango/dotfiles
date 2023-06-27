@@ -9,99 +9,54 @@ Debian workbench copy-pasta
 
 ```sh
 sudo apt install -y \
+	build-essential ca-certificates software-properties-common gnupg lsb-release apt-transport-https \
 	curl ripgrep xclip tmux neovim fzf lsd tree rename neofetch \
-	ffmpeg cloc vlc feh shotwell light xbacklight redshift autorandr \
-	git hub gh
-```
-```sh
-gh auth login
-```
-```sh
-~/.ssh
-ssh-keygen -t ed25519 -C "gospaso@gmail.com" -f gh
-ssh-add gh
-cat gh.pub
-```
-
-[add to gh](https://github.com/settings/ssh/new)
-
-<br>
-</details>
-
-<details>
-<summary><code>dirs</code></summary>
-
-<hr>
-
-```sh
-mkdir ~/m ~/f ~/r ~/s ~/w # mine, forks, repros, sandbox, work
-```
-```sh
-gh repo clone gorango/dotfiles ~/m/dotfiles
+	ffmpeg vlc feh shotwell light xbacklight redshift autorandr \
+	git hub gh cloc
 ```
 
 <br>
 </details>
 
 <details>
-<summary><code>apps</code></summary>
+<summary><code>wm</code></summary>
 
 <hr>
 
-- [brave](#brave)
-- [code](#code)
-- [gitkraken](#gitkraken)
-- [chrome](#chrome90)
-- [vlc](#vlc)
+- [i3](#i3)
+- [i3-gnome](#i3-gnome)
+- [theme](#theme)
 
 <hr>
 
-### [brave](https://brave.com/linux/)
+### [i3](https://i3wm.org/docs/)
 
 ```sh
-sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
-echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
-sudo apt install -y brave-browser
+sudo apt install -y i3
 ```
 
-### [code](https://code.visualstudio.com/Download)
+### [i3-gnome](https://github.com/i3-gnome/i3-gnome)
 
 ```sh
-wget --no-verbose -O /tmp/code.deb https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64
-sudo apt install -y /tmp/code.deb
-rm /tmp/code.deb
+git clone https://github.com/i3-gnome/i3-gnome.git ~/Downloads && cd $_
+sudo make install
 ```
 
-### [gitkraken](https://help.gitkraken.com/gitkraken-client/how-to-install/#deb)
+### theme
 
 ```sh
-wget --no-verbose -O /tmp/gitkraken.deb https://release.gitkraken.com/linux/gitkraken-amd64.deb
-sudo apt install -y /tmp/gitkraken.deb
-rm /tmp/gitkraken.deb
+sudo update-alternatives --config gdm3-theme.gresource
+# select gnome-shell-theme.gresource
 ```
-
-### chrome.90
-
 ```sh
-wget --no-verbose -O /tmp/chrome.deb https://www.slimjet.com/chrome/download-chrome.php?file=files%2F90.0.4430.72%2Fgoogle-chrome-stable_current_amd64.deb
-sudo apt install -y --allow-downgrades /tmp/chrome.deb
-rm /tmp/chrome.deb
+sudo vim /etc/gdm3/greeter.dconf-defaults
+# [org/gnome/login-screen]
+# logo=''
 ```
 
 ```sh
-sudo apt-mark hold google-chrome-stable # prevent auto-updates
-```
-
-```sh
-google-chrome --simulate-outdated-no-au='2099/12/31' >/dev/null 2>&1 & # open without update prompts
-```
-
-### vlc [?](https://askubuntu.com/a/263308)
-
-```
-Tools > Preferences
-
-Display > Output = X11 video output (XCB)
+set org.gnome.Terminal.Legacy.Settings headerbar false
+set org.gnome.Terminal.Legacy.Settings confirm-close false
 ```
 
 <br>
@@ -146,49 +101,7 @@ git clone https://github.com/agkozak/zsh-z $ZSH_CUSTOM/plugins/zsh-z
 curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
 rm ~/.zcompdump*; compinit
 ```
-<br>
-</details>
 
-<details>
-<summary><code>wm</code></summary>
-
-<hr>
-
-- [i3](#i3)
-- [i3-gnome](#i3-gnome)
-- [theme](#theme)
-
-<hr>
-
-### [i3](https://i3wm.org/docs/)
-
-```sh
-sudo apt install -y i3
-```
-
-### [i3-gnome](https://github.com/i3-gnome/i3-gnome)
-
-```sh
-git clone https://github.com/i3-gnome/i3-gnome.git ~/Downloads && cd $_
-sudo make install
-```
-
-### theme
-
-```sh
-sudo update-alternatives --config gdm3-theme.gresource
-# select gnome-shell-theme.gresource
-```
-```sh
-sudo vim /etc/gdm3/greeter.dconf-defaults
-# [org/gnome/login-screen]
-# logo=''
-```
-
-```sh
-set org.gnome.Terminal.Legacy.Settings headerbar false
-set org.gnome.Terminal.Legacy.Settings confirm-close false
-```
 <br>
 </details>
 
@@ -238,9 +151,9 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ### go
 
 ```sh
-rm -rf /usr/local/go
 curl https://golang.org/dl/go1.20.4.linux-amd64.tar.gz | sudo tar -C /usr/local -xzf -
 ```
+
 <br>
 </details>
 
@@ -251,6 +164,7 @@ curl https://golang.org/dl/go1.20.4.linux-amd64.tar.gz | sudo tar -C /usr/local 
 
 - [redis](#redis)
 - [postgres](#postgres)
+- [pgadmin](#pgadmin)
 
 <hr>
 
@@ -259,8 +173,8 @@ curl https://golang.org/dl/go1.20.4.linux-amd64.tar.gz | sudo tar -C /usr/local 
 ```sh
 curl -fsSL https://packages.redis.io/gpg | sudo gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg
 echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/redis.list
-sudo apt-get update
-sudo apt-get install redis
+sudo apt update
+sudo apt install -y redis
 ```
 
 ### postgres
@@ -268,8 +182,17 @@ sudo apt-get install redis
 ```sh
 sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
 wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
-sudo apt-get update
+sudo apt update
 sudo apt install -y postgresql
+```
+
+### pgadmin
+
+```sh
+curl -fsS https://www.pgadmin.org/static/packages_pgadmin_org.pub | sudo gpg --dearmor -o /usr/share/keyrings/packages-pgadmin-org.gpg
+sudo sh -c 'echo "deb [signed-by=/usr/share/keyrings/packages-pgadmin-org.gpg] https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_release -cs) pgadmin4 main" > /etc/apt/sources.list.d/pgadmin4.list && apt update'
+sudo apt install -y pgadmin4
+sudo /usr/pgadmin4/bin/setup-web.sh
 ```
 
 <br>
@@ -292,7 +215,6 @@ sudo apt install -y postgresql
 
 ```sh
 sudo apt install -y \
-build-essential ca-certificates software-properties-common gnupg lsb-release apt-transport-https \
 docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 
@@ -315,7 +237,8 @@ https://apt.releases.hashicorp.com $(lsb_release -cs) main" | \
 sudo tee /etc/apt/sources.list.d/hashicorp.list
 ```
 ```sh
-sudo apt-get install terraform
+sudo apt update
+sudo apt install -y terraform
 ```
 
 ### [helm](https://helm.sh/docs/intro/install/)
@@ -325,10 +248,7 @@ curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 ```
 
 
-##### TOC:
-- [kubectl](#kubectl)
-- [kubectx](#kubectxkubens)
-- [k9s](#k9s)
+### kubernetes
 
 #### [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-kubectl-binary-with-curl-on-linux)
 
@@ -351,6 +271,103 @@ sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens
 ```sh
 go install github.com/derailed/k9s@latest
 ```
+
+<br>
+</details>
+
+<details>
+<summary><code>apps</code></summary>
+
+<hr>
+
+- [brave](#brave)
+- [code](#code)
+- [gitkraken](#gitkraken)
+- [chrome.90](#chrome90)
+- [vlc](#vlc)
+
+<hr>
+
+### [brave](https://brave.com/linux/)
+
+```sh
+sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
+sudo apt install -y brave-browser
+```
+
+### [code](https://code.visualstudio.com/Download)
+
+```sh
+wget --no-verbose -O /tmp/code.deb https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64
+sudo apt install -y /tmp/code.deb
+rm /tmp/code.deb
+```
+
+Typescript Language Features: [use take over mode instead of VSCode built-in TS plugin](https://vuejs.org/guide/typescript/overview.html#volar-takeover-mode).
+
+### [gitkraken](https://help.gitkraken.com/gitkraken-client/how-to-install/#deb)
+
+```sh
+wget --no-verbose -O /tmp/gitkraken.deb https://release.gitkraken.com/linux/gitkraken-amd64.deb
+sudo apt install -y /tmp/gitkraken.deb
+rm /tmp/gitkraken.deb
+```
+
+### chrome.90
+
+```sh
+wget --no-verbose -O /tmp/chrome.deb https://www.slimjet.com/chrome/download-chrome.php?file=files%2F90.0.4430.72%2Fgoogle-chrome-stable_current_amd64.deb
+sudo apt install -y --allow-downgrades /tmp/chrome.deb
+rm /tmp/chrome.deb
+```
+
+```sh
+sudo apt-mark hold google-chrome-stable # prevent auto-updates
+```
+
+```sh
+google-chrome --simulate-outdated-no-au='2099/12/31' >/dev/null 2>&1 & # open without update prompts
+```
+
+### vlc [?](https://askubuntu.com/a/263308)
+
+```
+Tools > Preferences
+
+Display > Output = X11 video output (XCB)
+```
+
+<br>
+</details>
+
+<details>
+<summary><code>dirs</code></summary>
+
+<hr>
+
+```sh
+# mine, forks, repros, sandbox
+mkdir ~/m ~/f ~/r ~/s
+```
+```sh
+gh repo clone gorango/dotfiles ~/m/dotfiles
+```
+
+GitHub Auth
+
+```sh
+gh auth login
+```
+```sh
+~/.ssh
+ssh-keygen -t ed25519 -C "gospaso@gmail.com" -f gh
+ssh-add gh
+cat gh.pub
+```
+
+[Add new SSH key](https://github.com/settings/ssh/new)
+
 <br>
 </details>
 
@@ -362,15 +379,15 @@ go install github.com/derailed/k9s@latest
 ### `$HOME`
 
 ```sh
-ln -sf ~/m/dotfiles/.gitconfig ~/.gitconfig
-ln -s ~/m/dotfiles/.hushlogin ~/.hushlogin
 ln -sf ~/m/dotfiles/.profile ~/.profile
-ln -s ~/m/dotfiles/.xprofile ~/.xprofile
-ln -s ~/m/dotfiles/.device ~/.device
+ln -sf ~/m/dotfiles/.gitconfig ~/.gitconfig
 ln -sf ~/m/dotfiles/tmux/.tmux.conf ~/.tmux.conf
-ln -s ~/m/dotfiles/tmux/bin/tmux-sessionizer ~/.local/bin/tmux-sessionizer
 ln -sf ~/m/dotfiles/zsh/.zshrc ~/.zshrc
 ln -s ~/m/dotfiles/zsh/custom/* ~/.oh-my-zsh/custom
+ln -s ~/m/dotfiles/.hushlogin ~/.hushlogin
+ln -s ~/m/dotfiles/.xprofile ~/.xprofile
+ln -s ~/m/dotfiles/.device ~/.device
+ln -s ~/m/dotfiles/tmux/bin/tmux-sessionizer ~/.local/bin/tmux-sessionizer
 ```
 
 ### `$HOME/.config`
@@ -384,5 +401,6 @@ ln -sf ~/m/dotfiles/.config/autostart ~/.config/autostart
 ln -sf ~/m/dotfiles/.config/Code/User/settings.json ~/.config/Code/User/settings.json
 ln -sf ~/m/dotfiles/.config/Code/User/keybindings.json ~/.config/Code/User/keybindings.json
 ```
+
 <br>
 </details>
