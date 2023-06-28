@@ -283,8 +283,9 @@ go install github.com/derailed/k9s@latest
 - [brave](#brave)
 - [code](#code)
 - [gitkraken](#gitkraken)
-- [chrome.90](#chrome90)
+- [discord](#discord)
 - [vlc](#vlc)
+- [chrome.90](#chrome90)
 
 <hr>
 
@@ -314,6 +315,22 @@ sudo apt install -y /tmp/gitkraken.deb
 rm /tmp/gitkraken.deb
 ```
 
+### discord
+
+```sh
+wget --no-verbose -O /tmp/discord.deb https://discord.com/api/download?platform=linux&format=deb
+sudo apt install -y /tmp/discord.deb
+rm /tmp/discord.deb
+```
+
+### vlc [?](https://askubuntu.com/a/263308)
+
+```
+Tools > Preferences
+
+Display > Output = X11 video output (XCB)
+```
+
 ### chrome.90
 
 ```sh
@@ -328,14 +345,6 @@ sudo apt-mark hold google-chrome-stable # prevent auto-updates
 
 ```sh
 google-chrome --simulate-outdated-no-au='2099/12/31' >/dev/null 2>&1 & # open without update prompts
-```
-
-### vlc [?](https://askubuntu.com/a/263308)
-
-```
-Tools > Preferences
-
-Display > Output = X11 video output (XCB)
 ```
 
 <br>
