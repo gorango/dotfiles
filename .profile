@@ -40,7 +40,10 @@ export NPM_CONFIG_YES=true # npx default yes to download
 
 # pnpm
 export PNPM_HOME="/home/go/.local/share/pnpm"
-export PATH="$PNPM_HOME:$PATH"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
 
 # yarn
 export PATH="$(yarn global bin --offline):$PATH"
