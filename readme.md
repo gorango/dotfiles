@@ -186,6 +186,19 @@ sudo apt update
 sudo apt install -y postgresql
 ```
 
+```sh
+# Remove local password requirements
+sudo vim /etc/postgresql/15/main/pg_hba.conf # update IPv4/6 METHOD to trust
+pg_ctl reload
+```
+
+```sh
+# Run elevated as user
+sudo -u postgres -i
+createuser --interactive go
+psql -c "create database go"
+```
+
 ### pgadmin
 
 ```sh

@@ -47,3 +47,6 @@ esac
 
 # yarn
 export PATH="$(yarn global bin --offline):$PATH"
+
+# pg
+export PATH="$PATH:/usr/lib/postgresql/15/bin"
