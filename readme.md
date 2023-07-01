@@ -176,6 +176,10 @@ echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://pack
 sudo apt update
 sudo apt install -y redis
 ```
+```sh
+# Start at boot
+sudo systemctl enable redis-server.service
+```
 
 ### postgres
 
