@@ -38,8 +38,9 @@ sudo apt install -y i3
 ### [i3-gnome](https://github.com/i3-gnome/i3-gnome)
 
 ```sh
-git clone https://github.com/i3-gnome/i3-gnome.git ~/Downloads && cd $_
+git clone https://github.com/i3-gnome/i3-gnome.git /tmp/i3-gnome && cd $_
 sudo make install
+rm /tmp/i3-gnome -rf
 ```
 
 ### theme
@@ -131,7 +132,7 @@ pyenv global 3.10
 ```sh
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 nvm install --lts
-npm i -g yarn nodemon pm2 tldr typescript eslint @antfu/ni diff-so-fancy
+npm i -g yarn nodemon turbo pm2 tldr typescript eslint @antfu/ni diff-so-fancy
 ```
 
 ### ruby (rbenv)
