@@ -228,7 +228,16 @@ bindsym $mod+Shift+period exec systemctl suspend
 exec_always autorandr --change
 
 # workspace assignments
+workspace_layout tabbed
+
 workspace 1 output DP3
-workspace 9 output eDPI
-# assign [class="brave-browser"] $ws2
-# assign [class="gitkraken"] $ws4
+workspace 3 output DP3
+workspace 2 output eDPI
+workspace 4 output eDPI
+
+assign [class="Code"] $ws1
+assign [class="Brave-browser"] $ws2
+assign [class="Discord"] $ws2
+assign [class="Firefox"] $ws3
+assign [class="GitKraken"] $ws4
+assign [class="Google-chrome"] $ws3
