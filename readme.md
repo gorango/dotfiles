@@ -134,7 +134,7 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 nvm install --lts
 npm i -g \
 	yarn nodemon pm2 turbo typescript eslint @antfu/ni diff-so-fancy \
-	tldr gtop
+	tldr gtop live-server
 ```
 
 ### ruby (rbenv)
@@ -325,7 +325,7 @@ sudo apt install -y /tmp/code.deb
 rm /tmp/code.deb
 ```
 
-Typescript Language Features: [use take over mode instead of VSCode built-in TS plugin](https://vuejs.org/guide/typescript/overview.html#volar-takeover-mode).
+Typescript Language Features: [use takeover mode instead of VSCode built-in TS plugin](https://vuejs.org/guide/typescript/overview.html#volar-takeover-mode).
 
 ### [gitkraken](https://help.gitkraken.com/gitkraken-client/how-to-install/#deb)
 
