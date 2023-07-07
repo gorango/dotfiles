@@ -132,7 +132,9 @@ pyenv global 3.10
 ```sh
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 nvm install --lts
-npm i -g yarn nodemon turbo pm2 tldr typescript eslint @antfu/ni diff-so-fancy
+npm i -g \
+	yarn nodemon pm2 turbo typescript eslint @antfu/ni diff-so-fancy \
+	tldr gtop
 ```
 
 ### ruby (rbenv)
