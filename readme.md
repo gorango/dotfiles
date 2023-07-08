@@ -167,7 +167,6 @@ curl https://golang.org/dl/go1.20.4.linux-amd64.tar.gz | sudo tar -C /usr/local 
 
 - [redis](#redis)
 - [postgres](#postgres)
-- [pgadmin](#pgadmin)
 
 <hr>
 
@@ -182,6 +181,9 @@ sudo apt install -y redis
 ```sh
 # Start at boot
 sudo systemctl enable redis-server.service
+```
+```sh
+npm i -g redis-commander
 ```
 
 ### postgres
@@ -206,13 +208,28 @@ createuser --interactive go
 psql -c "create database go"
 ```
 
-### pgadmin
+#### pgadmin
 
 ```sh
 curl -fsS https://www.pgadmin.org/static/packages_pgadmin_org.pub | sudo gpg --dearmor -o /usr/share/keyrings/packages-pgadmin-org.gpg
 sudo sh -c 'echo "deb [signed-by=/usr/share/keyrings/packages-pgadmin-org.gpg] https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_release -cs) pgadmin4 main" > /etc/apt/sources.list.d/pgadmin4.list && apt update'
 sudo apt install -y pgadmin4
 sudo /usr/pgadmin4/bin/setup-web.sh
+```
+
+#### extensions
+
+```sh
+sudo apt install libpq-dev postgresql-server-dev-15
+```
+
+#### [`pg_hashids`](https://github.com/iCyberon/pg_hashids)
+
+```sh
+git clone https://github.com/iCyberon/pg_hashids /tmp/pg_hashids && cd $_
+USE_PGXS=1 sudo make
+USE_PGXS=1 sudo make install
+rm /tmp/pg_hashids -rf
 ```
 
 <br>
