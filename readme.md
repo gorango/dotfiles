@@ -166,6 +166,7 @@ curl https://golang.org/dl/go1.20.4.linux-amd64.tar.gz | sudo tar -C /usr/local 
 <hr>
 
 - [redis](#redis)
+- [mongo](#mongo)
 - [postgres](#postgres)
 
 <hr>
@@ -179,11 +180,26 @@ sudo apt update
 sudo apt install -y redis
 ```
 ```sh
-# Start at boot
+# (Optional) Start at boot
 sudo systemctl enable redis-server.service
 ```
 ```sh
 npm i -g redis-commander
+```
+
+### mongo
+
+```sh
+curl -fsSL https://pgp.mongodb.com/server-6.0.asc | \
+	sudo gpg -o /usr/share/keyrings/mongodb-server-6.0.gpg \
+	--dearmor
+echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-6.0.gpg ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list
+sudo apt-get update
+sudo apt-get install -y mongodb-org
+```
+```sh
+# (Optional) Start at boot
+sudo systemctl enable mongod
 ```
 
 ### postgres
