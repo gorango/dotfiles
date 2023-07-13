@@ -50,3 +50,6 @@ export PATH="$(yarn global bin --offline):$PATH"
 
 # pg
 export PATH="$PATH:/usr/lib/postgresql/15/bin"
+
+# envman
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"

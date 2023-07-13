@@ -306,7 +306,7 @@ sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens
 #### [k9s](https://github.com/derailed/k9s#installation)
 
 ```sh
-go install github.com/derailed/k9s@latest
+curl -sS https://webinstall.dev/k9s | bash
 ```
 
 <br>
