@@ -261,6 +261,7 @@ rm /tmp/pg_hashids -rf
 - [terraform](#terraform)
 - [helm](#helm)
 - [kubernetes](#kubernetes)
+- [stripe](#kubernetes)
 
 <hr>
 
@@ -323,6 +324,15 @@ sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens
 
 ```sh
 curl -sS https://webinstall.dev/k9s | bash
+```
+
+#### [stripe](https://stripe.com/docs/stripe-cli)
+
+```sh
+curl -s https://packages.stripe.dev/api/security/keypair/stripe-cli-gpg/public | gpg --dearmor | sudo tee /usr/share/keyrings/stripe.gpg
+echo "deb [signed-by=/usr/share/keyrings/stripe.gpg] https://packages.stripe.dev/stripe-cli-debian-local stable main" | sudo tee -a /etc/apt/sources.list.d/stripe.list
+sudo apt update
+sudo apt install stripe
 ```
 
 <br>
