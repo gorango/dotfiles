@@ -12,7 +12,7 @@ sudo apt install -y \
 	build-essential ca-certificates software-properties-common gnupg lsb-release apt-transport-https \
 	curl ripgrep xclip tmux neovim fzf lsd tree rename neofetch \
 	ffmpeg vlc feh shotwell light xbacklight redshift autorandr \
-	git hub gh cloc
+	git hub gh cloc gource xvfb
 ```
 
 <br>
@@ -261,7 +261,7 @@ rm /tmp/pg_hashids -rf
 - [terraform](#terraform)
 - [helm](#helm)
 - [kubernetes](#kubernetes)
-- [stripe](#kubernetes)
+- [misc](#misc)
 
 <hr>
 
@@ -326,6 +326,8 @@ sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens
 curl -sS https://webinstall.dev/k9s | bash
 ```
 
+### misc
+
 #### [stripe](https://stripe.com/docs/stripe-cli)
 
 ```sh
@@ -333,6 +335,12 @@ curl -s https://packages.stripe.dev/api/security/keypair/stripe-cli-gpg/public |
 echo "deb [signed-by=/usr/share/keyrings/stripe.gpg] https://packages.stripe.dev/stripe-cli-debian-local stable main" | sudo tee -a /etc/apt/sources.list.d/stripe.list
 sudo apt update
 sudo apt install stripe
+```
+
+#### [pup](https://github.com/ericchiang/pup#pup)
+
+```sh
+go install github.com/ericchiang/pup@latest
 ```
 
 <br>
@@ -349,6 +357,7 @@ sudo apt install stripe
 - [discord](#discord)
 - [vlc](#vlc)
 - [chrome.90](#chrome90)
+- [obsidian](#obsidian)
 
 <hr>
 
@@ -408,6 +417,16 @@ sudo apt-mark hold google-chrome-stable # prevent auto-updates
 
 ```sh
 google-chrome --simulate-outdated-no-au='2099/12/31' >/dev/null 2>&1 & # open without update prompts
+```
+
+### obsidian
+
+```sh
+curl -s https://obsidian.md/download \
+	| pup 'a:contains("Deb") attr{href}' \
+	| xargs wget --no-verbose -O /tmp/obsidian.deb
+sudo apt install -y /tmp/obsidian.deb
+rm /tmp/obsidian.deb
 ```
 
 <br>
