@@ -24,7 +24,8 @@ if [ -e /home/go/.nix-profile/etc/profile.d/nix.sh ]; then . /home/go/.nix-profi
 . "$HOME/.cargo/env"
 
 # go
-export PATH=$PATH:/usr/local/go/bin:`go env GOPATH`/bin
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:`go env GOPATH`/bin
 
 # pyenv
 export PATH="$HOME/.pyenv/bin:$PATH"
