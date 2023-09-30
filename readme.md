@@ -10,7 +10,7 @@ Debian workbench copy-pasta
 ```sh
 sudo apt install -y \
 	build-essential ca-certificates software-properties-common gnupg lsb-release apt-transport-https \
-	curl ripgrep tmux neovim fzf lsd xclip maim tree rename neofetch \
+	curl ripgrep tmux neovim fzf lsd xclip xdotool maim tree rename neofetch \
 	ffmpeg vlc feh shotwell light xbacklight redshift autorandr \
 	git hub gh cloc gource xvfb
 ```
