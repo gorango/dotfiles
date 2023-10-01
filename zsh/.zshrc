@@ -44,6 +44,8 @@ alias lt='ls --tree'
 # terminal commands
 alias e='exit'
 alias c='code . && e'
+alias t='tmux'
+alias x='tmux'
 
 # npm commands
 alias d='nr dev'
