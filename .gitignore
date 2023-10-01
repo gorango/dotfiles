@@ -1,2 +1,4 @@
 .config/nvim/plugin/packer_compiled.lua
 .config/nvim/.netrwhist
+.config/nvim/lazy-lock.json
+
