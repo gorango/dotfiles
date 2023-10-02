@@ -12,7 +12,13 @@ sudo apt install -y \
 	build-essential ca-certificates software-properties-common gnupg lsb-release apt-transport-https \
 	curl ripgrep tmux neovim fzf lsd xclip xdotool maim tree rename neofetch \
 	ffmpeg vlc feh shotwell light xbacklight redshift autorandr \
+    pandoc lynx \
 	git hub gh cloc gource xvfb
+```
+
+```sh
+gsettings set org.gnome.Terminal.Legacy.Settings headerbar false
+gsettings set org.gnome.Terminal.Legacy.Settings confirm-close false
 ```
 
 <br>

@@ -51,9 +51,6 @@ alias lg='lazygit'
 
 # npm commands
 alias d='nr dev'
-alias lint='nr lint'
-alias lintf='nr lint --fix'
-alias release='nr release'
 
 # supabase
 alias supabase='node_modules/.bin/supabase'
