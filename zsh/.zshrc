@@ -47,6 +47,8 @@ alias c='code . && e'
 alias t='tmux'
 alias x='tmux'
 
+alias lg='lazygit'
+
 # npm commands
 alias d='nr dev'
 alias lint='nr lint'
