@@ -1,5 +1,6 @@
 vim.opt.guicursor = ""
 vim.opt.foldmethod = "indent"
+vim.opt.foldlevel = 99
 
 vim.opt.nu = true
 vim.opt.relativenumber = true
