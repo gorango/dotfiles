@@ -18,7 +18,7 @@ return {
         side = "right",
         show_integration_count = true,
         width = 7,
-        winblend = 75,
+        winblend = 25,
       },
     })
 
@@ -29,7 +29,7 @@ return {
     vim.keymap.set("n", "<Leader>ms", MiniMap.toggle_side)
     vim.keymap.set("n", "<Leader>mt", MiniMap.toggle)
 
-    MiniMap.open()
+    -- MiniMap.open()
     MiniMap.refresh({
       symbols = {
         encode = MiniMap.gen_encode_symbols.dot("4x2"),
@@ -37,3 +37,4 @@ return {
     })
   end,
 }
+
