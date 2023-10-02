@@ -58,3 +58,9 @@ alias sb='supabase'
 
 # chrome
 alias cs='google-chrome --simulate-outdated-no-au="2099/12/31" >/dev/null 2>&1 & disown && exit'
+
+bindkey -s ^f "tmux-sessionizer\n"
+
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+source /usr/share/doc/fzf/examples/completion.zsh
+
