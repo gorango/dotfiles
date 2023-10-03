@@ -10,9 +10,9 @@ Debian workbench copy-pasta
 ```sh
 sudo apt install -y \
 	build-essential ca-certificates software-properties-common gnupg lsb-release apt-transport-https \
-	curl ripgrep tmux neovim fzf lsd xclip xdotool maim tree rename neofetch \
+	curl ripgrep tmux neovim fzf fd-find lsd xclip xdotool maim tree rename neofetch \
 	ffmpeg vlc feh shotwell light xbacklight redshift autorandr \
-    pandoc lynx \
+	pandoc lynx \
 	git hub gh cloc gource xvfb
 ```
 
@@ -445,7 +445,7 @@ rm /tmp/obsidian.deb
 
 ```sh
 # mine, forks, repros, sandbox
-mkdir ~/m ~/f ~/r ~/s
+mkdir ~/a ~/f ~/m ~/r ~/s ~/w
 ```
 ```sh
 gh repo clone gorango/dotfiles ~/m/dotfiles
@@ -497,6 +497,18 @@ ln -sf ~/m/dotfiles/.config/redshift ~/.config/redshift
 ln -sf ~/m/dotfiles/.config/autostart ~/.config/autostart
 ln -sf ~/m/dotfiles/.config/Code/User/settings.json ~/.config/Code/User/settings.json
 ln -sf ~/m/dotfiles/.config/Code/User/keybindings.json ~/.config/Code/User/keybindings.json
+```
+
+### `$HOME/Downloads`
+
+```sh
+ln -s ~/Downloads ~/d
+```
+
+### `fd`
+
+```sh
+ln -s $(which fdfind) ~/.local/bin/fd
 ```
 
 <br>
