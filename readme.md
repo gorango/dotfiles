@@ -74,8 +74,8 @@ set org.gnome.Terminal.Legacy.Settings confirm-close false
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
 
-To install plugins in tmux: `C-b I`.
-To update all plugins: `C-b U`.
+To install plugins in tmux: `C-b I` or `~/.tmux/plugins/tpm/scripts/install_plugins.sh`.
+To update all plugins: `C-b U` or `~/.tmux/plugins/tpm/scripts/update_plugin.sh`.
 
 
 <br>
