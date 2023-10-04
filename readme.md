@@ -32,6 +32,7 @@ gsettings set org.gnome.Terminal.Legacy.Settings confirm-close false
 - [i3](#i3)
 - [i3-gnome](#i3-gnome)
 - [theme](#theme)
+- [tmux](#tmux)
 
 <hr>
 
@@ -65,6 +66,17 @@ sudo vim /etc/gdm3/greeter.dconf-defaults
 set org.gnome.Terminal.Legacy.Settings headerbar false
 set org.gnome.Terminal.Legacy.Settings confirm-close false
 ```
+
+### tmux
+
+
+```sh
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+```
+
+To install plugins in tmux: `C-b I`.
+To update all plugins: `C-b U`.
+
 
 <br>
 </details>
