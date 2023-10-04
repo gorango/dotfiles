@@ -1,7 +1,7 @@
 return {
   "folke/zen-mode.nvim",
   config = function()
-    vim.keymap.set("n", "<leader>zz", function()
+    vim.keymap.set("n", "<leader>Zz", function()
         require("zen-mode").setup {
             window = {
                 width = 90,
@@ -14,7 +14,7 @@ return {
         vim.wo.rnu = true
     end)
 
-    vim.keymap.set("n", "<leader>zZ", function()
+    vim.keymap.set("n", "<leader>ZZ", function()
         require("zen-mode").setup {
             window = {
                 width = 80,

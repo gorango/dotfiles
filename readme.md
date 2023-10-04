@@ -485,6 +485,9 @@ ln -s ~/m/dotfiles/.hushlogin ~/.hushlogin
 ln -s ~/m/dotfiles/.xprofile ~/.xprofile
 ln -s ~/m/dotfiles/.device ~/.device
 ln -s ~/m/dotfiles/tmux/bin/tmux-sessionizer ~/.local/bin/tmux-sessionizer
+ln -s ~/m/dotfiles/tmux/bin/tmux-cht.sh ~/.local/bin/tmux-cht.sh
+ln -s ~/m/dotfiles/tmux/.tmux-cht-command ~/.tmux-cht-command
+ln -s ~/m/dotfiles/tmux/.tmux-cht-languages ~/.tmux-cht-languages
 ```
 
 ### `$HOME/.config`
