@@ -23,6 +23,7 @@ antibody bundle < ~/.zsh_plugins.txt # https://github.com/ahmetb/kubectx
 #source after plugins
 ZSH=$HOME/.oh-my-zsh
 source $ZSH/oh-my-zsh.sh
+source $HOME/.profile
 
 eval "$(z init zsh)" # zoxide
 eval "$(~/.rbenv/bin/rbenv init - zsh)" # rbenv
