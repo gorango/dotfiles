@@ -10,9 +10,9 @@ Debian workbench copy-pasta
 ```sh
 sudo apt install -y \
 	build-essential ca-certificates software-properties-common gnupg lsb-release apt-transport-https \
-	curl ripgrep tmux neovim fzf fd-find lsd xclip xdotool maim tree rename neofetch \
+	curl ripgrep neovim fzf fd-find lsd xclip xdotool maim tree rename neofetch \
 	ffmpeg vlc feh shotwell light xbacklight redshift autorandr \
-	pandoc lynx \
+	pandoc lynx fonts-powerline \
 	git hub gh cloc gource xvfb
 ```
 
@@ -69,6 +69,20 @@ set org.gnome.Terminal.Legacy.Settings confirm-close false
 
 ### tmux
 
+```sh
+sudo apt install libevent-dev libncurses-dev
+VERSION=3.3a
+wget https://github.com/tmux/tmux/releases/download/${VERSION}/tmux-${VERSION}.tar.gz
+tar xf tmux-${VERSION}.tar.gz
+rm -f tmux-${VERSION}.tar.gz
+cd tmux-${VERSION}
+./configure
+make
+sudo make install
+cd -
+sudo rm -rf /usr/local/src/tmux-\*
+sudo mv tmux-${VERSION} /usr/local/src
+```
 
 ```sh
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
