@@ -8,14 +8,7 @@ ROOT_SESSIONS=(
 	~/f
 	~/s
 )
-SEER_SESSIONS=(
-	~/m/seer.sh/apps
-	~/m/seer.sh/packages/@dev
-	~/m/seer.sh/packages/@seer
-	~/m/seer.sh/packages/extract
-	~/m/seer.sh/packages/unified
-)
-SESSION_TARGETS=("${ROOT_SESSIONS[@]}" "${SEER_SESSIONS[@]}")
+SESSION_TARGETS=("${ROOT_SESSIONS[@]}")
 
 if [[ $# -eq 1 ]]; then
     selected=$1
