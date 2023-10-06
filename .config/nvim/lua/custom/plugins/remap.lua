@@ -9,7 +9,9 @@ vim.keymap.set("n", "<A-k>", ":call append(line('.')-1, '')<CR>")
 
 -- vim.keymap.set("n", "J", "mzJ`z")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-down>", "<C-E>", { noremap = true })
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "<C-up>", "<C-Y>", { noremap = true })
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
