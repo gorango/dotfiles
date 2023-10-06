@@ -168,7 +168,7 @@ require('lazy').setup({
     build = ':TSUpdate',
   },
 
-  require 'kickstart.plugins.autoformat',
+  -- require 'kickstart.plugins.autoformat',
   -- require 'kickstart.plugins.debug',
 
   -- docs: https://github.com/folke/lazy.nvim#-structuring-your-plugins
