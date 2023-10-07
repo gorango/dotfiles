@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 
 ROOT_SESSIONS=(
-	~/d
-	~/m
-	~/w
-	~/r
-	~/f
-	~/s
+    ~/a
+    ~/d
+    ~/m
+    ~/w
+    ~/r
+    ~/f
+    ~/s
 )
 SESSION_TARGETS=("${ROOT_SESSIONS[@]}")
 

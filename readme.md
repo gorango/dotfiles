@@ -505,10 +505,10 @@ ln -s ~/m/dotfiles/zsh/custom/* ~/.oh-my-zsh/custom
 ln -s ~/m/dotfiles/.hushlogin ~/.hushlogin
 ln -s ~/m/dotfiles/.xprofile ~/.xprofile
 ln -s ~/m/dotfiles/.device ~/.device
-ln -s ~/m/dotfiles/tmux/bin/tmux-sessionizer ~/.local/bin/tmux-sessionizer
-ln -s ~/m/dotfiles/tmux/bin/tmux-cht.sh ~/.local/bin/tmux-cht.sh
-ln -s ~/m/dotfiles/tmux/.tmux-cht-command ~/.tmux-cht-command
-ln -s ~/m/dotfiles/tmux/.tmux-cht-languages ~/.tmux-cht-languages
+ln -s ~/m/dotfiles/bin/tmux-sessionizer ~/.local/bin/tmux-sessionizer
+ln -sf ~/m/dotfiles/bin/cht.sh ~/.local/bin/cht.sh
+ln -sf ~/m/dotfiles/bin/.cht-command ~/.cht-command
+ln -sf ~/m/dotfiles/bin/.cht-languages ~/.cht-languages
 ```
 
 ### `$HOME/.config`
