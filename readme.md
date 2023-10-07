@@ -12,13 +12,8 @@ sudo apt install -y \
 	build-essential ca-certificates software-properties-common gnupg lsb-release apt-transport-https \
 	curl ripgrep neovim fzf fd-find lsd xclip xdotool maim tree rename neofetch \
 	ffmpeg vlc feh shotwell light xbacklight redshift autorandr \
-	pandoc lynx fonts-powerline \
+	pandoc lynx fonts-powerline xbindkeys jq \
 	git hub gh cloc gource xvfb
-```
-
-```sh
-gsettings set org.gnome.Terminal.Legacy.Settings headerbar false
-gsettings set org.gnome.Terminal.Legacy.Settings confirm-close false
 ```
 
 <br>
@@ -470,7 +465,7 @@ rm /tmp/obsidian.deb
 <hr>
 
 ```sh
-# mine, forks, repros, sandbox
+# archives, forks, mine, repros, sandbox, work
 mkdir ~/a ~/f ~/m ~/r ~/s ~/w
 ```
 ```sh

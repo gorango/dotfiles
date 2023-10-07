@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+# dependencies: jq xdotool xbindkeys
+# reload config: `xbindkeys --poll-rc`
+
+requirements="Position should be a number from 1 to 9."
+
+if [ "$#" -ne 1 ]; then
+  echo "Usage: $0 <position>"
+  echo $requirements
+  exit 1
+fi
+
+displays=$(i3-msg -t get_workspaces)
+focused=$(echo $displays | jq '.[] | select(.focused==true)')
+screen_width=$(echo $focused | jq '.rect.width')
+screen_height=$(echo $focused | jq '.rect.height')
+offset_x=$(echo $focused | jq '.rect.x')
+
+positions=("20 80" "50 90" "80 80"
+           "10 50" "50 50" "90 50"
+           "20 20" "50 10" "80 20")
+
+position="$1"
+if ! [[ "$position" =~ ^[1-9]$ ]]; then
+  echo $requirements
+  exit 1
+fi
+
+position_index=$((position - 1))
+coordinates=(${positions[$position_index]})
+x_coord=$((offset_x + screen_width * coordinates[0] / 100))
+y_coord=$((screen_height * coordinates[1] / 100))
+
+xdotool mousemove "$x_coord" "$y_coord"
+

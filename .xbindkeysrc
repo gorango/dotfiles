@@ -1,0 +1,42 @@
+# Version: 1.8.6
+#
+# To specify a key, you can use 'xbindkeys --key' or
+# 'xbindkeys --multikey' and put one of the two lines in this file.
+#
+# The format of a command line is:
+#    "command to start"
+#       associated key
+#
+# List of modifier:
+#   Release, Control, Shift, Mod1 (Alt), Mod2 (NumLock),
+#   Mod3 (CapsLock), Mod4, Mod5 (Scroll).
+#
+# The release modifier is not a standard X modifier, but you can
+# use it if you want to catch release events instead of press events
+
+"cursor 1"
+  control + 1
+
+"cursor 2"
+  control + 2
+
+"cursor 3"
+  control + 3
+
+"cursor 4"
+  control + 4
+
+"cursor 5"
+  control + 5
+
+"cursor 6"
+  control + 6
+
+"cursor 7"
+  control + 7
+
+"cursor 8"
+  control + 8
+
+"cursor 9"
+  control + 9
