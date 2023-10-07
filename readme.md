@@ -379,8 +379,6 @@ go install github.com/ericchiang/pup@latest
 <hr>
 
 - [brave](#brave)
-- [code](#code)
-- [gitkraken](#gitkraken)
 - [discord](#discord)
 - [vlc](#vlc)
 - [chrome.90](#chrome90)
@@ -394,24 +392,6 @@ go install github.com/ericchiang/pup@latest
 sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
 echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
 sudo apt install -y brave-browser
-```
-
-### [code](https://code.visualstudio.com/Download)
-
-```sh
-wget --no-verbose -O /tmp/code.deb https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64
-sudo apt install -y /tmp/code.deb
-rm /tmp/code.deb
-```
-
-Typescript Language Features: [use takeover mode instead of VSCode built-in TS plugin](https://vuejs.org/guide/typescript/overview.html#volar-takeover-mode).
-
-### [gitkraken](https://help.gitkraken.com/gitkraken-client/how-to-install/#deb)
-
-```sh
-wget --no-verbose -O /tmp/gitkraken.deb https://release.gitkraken.com/linux/gitkraken-amd64.deb
-sudo apt install -y /tmp/gitkraken.deb
-rm /tmp/gitkraken.deb
 ```
 
 ### discord
