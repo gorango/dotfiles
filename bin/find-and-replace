@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+
+if [ "$#" -ne 2 ]; then
+  echo "Usage: $0 <search_string> <replace_string>"
+  echo "Find and replace arguments are required."
+  exit 1
+fi
+
+search_string="$1"
+replace_string="$2"
+found_matches=false
+
+while IFS= read -r -d '' file; do
+    matches=$(grep -n "$search_string" "$file")
+
+    if [ -n "$matches" ]; then
+        echo "$file $matches"
+        found_matches=true
+
+        while true; do
+            # Open a separate file descriptor for reading user input to prevent infinite loop
+            exec 3< /dev/tty
+            read -n 1 -u 3 -p "Replace '$search_string' with '$replace_string'? (y/n): " answer
+            exec 3<&-
+
+            case "$answer" in
+               [Yy]*|"" )
+                    sed -i "s/$search_string/$replace_string/g" "$file"
+                    echo " applied."
+                    break
+                    ;;
+               [Nn]* )
+                    echo " skipped."
+                    break
+                    ;;
+               * )
+                    echo " answer 'yes' or 'no'."
+                    ;;
+            esac
+        done
+    fi
+done < <(find . -type d -name .git -prune -o -type f -print0)
+
+if [ "$found_matches" = "false" ]; then
+    echo "No matches found."
+fi
