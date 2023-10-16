@@ -43,7 +43,7 @@ gui:
   showListFooter: true # for seeing the '5 of 20' message in list panels
   showRandomTip: true
   showBranchCommitHash: false # show commit hashes alongside branch names
-  showBottomLine: true # for hiding the bottom information line (unless it has important information to tell you)
+  showBottomLine: false # for hiding the bottom information line (unless it has important information to tell you)
   showPanelJumps: true # for showing the jump-to-panel keybindings as panel subtitles
   showCommandLog: true
   showIcons: false # deprecated: use nerdFontsVersion instead
@@ -110,8 +110,8 @@ promptToReturnFromSubprocess: true # display confirmation when subprocess termin
 keybinding:
   universal:
     quit: 'q'
-    quit-alt1: '<c-c>' # alternative/alias of quit
-    return: '<esc>' # return to previous menu, will quit if there's nowhere to return
+    quit-alt1: '' # alternative/alias of quit
+    return: '<c-c>' # return to previous menu, will quit if there's nowhere to return
     quitWithoutChangingDirectory: 'Q'
     togglePanel: '<tab>' # goto the next panel
     prevItem: '<up>' # go one line up
@@ -131,7 +131,7 @@ keybinding:
     jumpToBlock: ['1', '2', '3', '4', '5'] # goto the Nth block / panel
     nextMatch: 'n'
     prevMatch: 'N'
-    optionMenu: <disabled> # show help menu
+    optionMenu: '' # show help menu
     optionMenu-alt1: '?' # show help menu
     select: '<space>'
     goInto: '<enter>'
