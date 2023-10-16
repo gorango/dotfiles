@@ -13,7 +13,6 @@ plugins=(
 	git
 	zsh-autosuggestions      # https://github.com/zsh-users/zsh-autosuggestions
 	zsh-syntax-highlighting  # https://github.com/zsh-users/zsh-syntax-highlighting.git
-	zsh-nvm                  # https://github.com/lukechilds/zsh-nvm
 	zsh-z                    # https://github.com/agkozak/zsh-z
 )
 
@@ -28,6 +27,7 @@ source $HOME/.profile
 
 eval "$(z init zsh)" # zoxide
 eval "$(~/.rbenv/bin/rbenv init - zsh)" # rbenv
+eval "$(fnm env --use-on-cd)"
 
 # fix sudo - can set root shell to `/bin/zsh` with `sudo chsh`
 alias sudo='sudo '
@@ -45,7 +45,6 @@ alias lt='ls --tree'
 
 # terminal commands
 alias e='exit'
-alias c='code . && e'
 alias t='tmux'
 alias x='tmux'
 
