@@ -36,7 +36,7 @@ eval "$(pyenv virtualenv-init -)"
 
 # fnm
 export PATH="$HOME/.local/share/fnm:$PATH"
-eval "$(fnm env)"
+eval "$(fnm env --multi 2> /dev/null)"
 
 # pnpm
 export PNPM_HOME="$HOME/.local/share/pnpm"
@@ -44,9 +44,6 @@ case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
-
-# yarn
-export PATH="$(yarn global bin --offline):$PATH"
 
 # pg
 export PATH="$PATH:/usr/lib/postgresql/15/bin"
