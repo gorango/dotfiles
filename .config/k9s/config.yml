@@ -21,12 +21,12 @@ k9s:
   clusters:
     lke119010:
       namespace:
-        active: all
+        active: application
         lockFavorites: false
         favorites:
         - application
+        - dbs
         - all
-        - default
       view:
         active: po
       featureGates:
@@ -40,7 +40,7 @@ k9s:
           cpu: 100m
           memory: 100Mi
         labels: {}
-      portForwardAddress: localhost
+      portForwardAddress: 127.0.0.1
   thresholds:
     cpu:
       critical: 90
