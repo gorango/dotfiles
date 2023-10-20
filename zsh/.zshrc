@@ -67,3 +67,5 @@ else
 	bindkey -s ^f 'tmux-sessionizer\n'
 fi
 
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
