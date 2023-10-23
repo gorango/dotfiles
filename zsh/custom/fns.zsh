@@ -106,3 +106,6 @@ function md() {
     pandoc "$1" -f markdown -t html | lynx -stdin
 }
 
+function silent() {
+  $@ 2>/dev/null &
+}
