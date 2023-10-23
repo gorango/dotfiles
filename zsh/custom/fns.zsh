@@ -109,3 +109,26 @@ function md() {
 function silent() {
   $@ 2>/dev/null &
 }
+
+function fehh() {
+  local dir=""
+  local extra_flags=()
+
+  for arg in "$@"; do
+    if [[ -z "$dir" && -d "$arg" ]]; then
+      dir="$arg"
+    else
+      extra_flags+=("$arg")
+    fi
+  done
+
+  if [[ -z "$dir" ]]; then
+    echo "Usage: fehh <dir> [additional feh flags]"
+    return 1
+  fi
+
+  local save_dir="$dir/s"
+  mkdir -p "$save_dir"
+
+  feh -d -Y -q -B black -Z -. -r "${extra_flags[@]}" -j "$save_dir" "$dir" 
+}
