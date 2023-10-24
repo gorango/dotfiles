@@ -1,15 +1,11 @@
 #!/usr/bin/env bash
 
-ROOT_SESSIONS=(
-    ~/a
-    ~/d
-    ~/m
-    ~/w
-    ~/r
-    ~/f
-    ~/s
-)
-SESSION_TARGETS=("${ROOT_SESSIONS[@]}")
+SESSION_TARGETS=()
+
+while IFS= read -r line; do
+    expanded_path=$(eval echo "$line")
+    SESSION_TARGETS+=("$expanded_path")
+done < ~/.tmux-sessionizer-targets
 
 if [[ $# -eq 1 ]]; then
     selected=$1
