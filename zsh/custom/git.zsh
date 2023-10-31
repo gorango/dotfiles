@@ -48,32 +48,6 @@ function gd() {
   fi
 }
 
-function gt() {
-  local dir
-  local gitignore
-
-  if [[ -f .gitignore ]]; then
-    gitignore=$(cat .gitignore | tr '\n' '|')
-  else
-    gitignore=""
-  fi
-
-  if [[ $# -eq 0 ]]; then
-    tree -I "$gitignore"
-  else
-    if [[ $1 == -* ]]; then
-      tree -I "$gitignore" "$@"
-    else
-      dir="$1"
-      if [[ -d "$dir" ]]; then
-        tree -I "$gitignore" "${@:2}" "$dir"
-      else
-        echo "$dir is not a directory."
-      fi
-    fi
-  fi
-}
-
 function pr() {
   if [ $1 = "ls" ]; then
     gh pr list
