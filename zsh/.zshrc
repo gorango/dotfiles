@@ -45,13 +45,12 @@ alias lt='ls --tree'
 
 # terminal commands
 alias e='exit'
-alias t='tmux'
 alias x='tmux'
 
 alias lg='lazygit'
 
 # npm commands
-alias d='nr dev'
+alias d='pnpm dev'
 
 # supabase
 alias supabase='node_modules/.bin/supabase'
