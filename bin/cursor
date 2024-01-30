@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
-# dependencies: jq xdotool xbindkeys
-# reload config: `xbindkeys --poll-rc`
+# INSTALL:
+# apt install jq xdotool xbindkeys
+# ln -s .xbindkeysrc ~/.xbindkeysrc
+# xbindkeys --poll-rc
 
 requirements="Position should be a number from 1 to 9."
 
