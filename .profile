@@ -11,9 +11,9 @@ export TERM='xterm-256color'
 
 # preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
+  export EDITOR='nvim'
 else
-  export EDITOR='vim'
+  export EDITOR='nvim'
 fi
 
 # kensington trackball config
@@ -50,3 +50,5 @@ export PATH="$PATH:/usr/lib/postgresql/15/bin"
 
 # envman
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+
+export SEER=~/m/seer/main

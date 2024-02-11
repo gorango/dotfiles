@@ -39,22 +39,16 @@ alias v='nvim'
 
 # lsd
 alias ls='lsd'
-alias l='ls -l'
+alias l='ls -a'
 alias la='ls -la'
-alias lt='ls --tree'
+alias lt='ls --tree -I .git -I node_modules -I dist'
 
 # terminal commands
 alias e='exit'
 alias x='tmux'
-
 alias lg='lazygit'
-
-# npm commands
 alias d='pnpm dev'
-
-# supabase
 alias supabase='node_modules/.bin/supabase'
-alias sb='supabase'
 
 # chrome
 alias cs='google-chrome --simulate-outdated-no-au="2099/12/31" >/dev/null 2>&1 & disown && exit'
