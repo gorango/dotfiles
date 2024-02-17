@@ -25,7 +25,7 @@ ZSH=$HOME/.oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 source $HOME/.profile
 
-eval "$(z init zsh)" # zoxide
+eval "$(zoxide init --cmd cd zsh)" # zoxide
 eval "$(~/.rbenv/bin/rbenv init - zsh)" # rbenv
 eval "$(fnm env --use-on-cd)"
 
@@ -41,7 +41,7 @@ alias v='nvim'
 alias ls='lsd'
 alias l='ls -a'
 alias la='ls -la'
-alias lt='ls --tree -I .git -I node_modules -I dist'
+alias lt='ls --tree -I .git -I node_modules -I dist -I coverage'
 
 # terminal commands
 alias e='exit'
