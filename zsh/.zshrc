@@ -25,7 +25,7 @@ ZSH=$HOME/.oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 source $HOME/.profile
 
-eval "$(zoxide init --cmd cd zsh)" # zoxide
+eval "$(z init zsh)" # zoxide
 eval "$(~/.rbenv/bin/rbenv init - zsh)" # rbenv
 eval "$(fnm env --use-on-cd)"
 
