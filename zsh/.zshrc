@@ -43,6 +43,9 @@ alias l='ls -a'
 alias la='ls -la'
 alias lt='ls --tree -I .git -I node_modules -I dist -I coverage'
 
+#tree
+alias tree='tree -I ".git|node_modules|dist|coverage|fixtures"'
+
 # terminal commands
 alias e='exit'
 alias x='tmux'
