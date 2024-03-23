@@ -28,6 +28,7 @@ source $HOME/.profile
 eval "$(z init zsh)" # zoxide
 eval "$(~/.rbenv/bin/rbenv init - zsh)" # rbenv
 eval "$(fnm env --use-on-cd)"
+eval "$(gh copilot alias -- zsh)" # github copilot
 
 # fix sudo - can set root shell to `/bin/zsh` with `sudo chsh`
 alias sudo='sudo '
