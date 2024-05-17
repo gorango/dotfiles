@@ -17,6 +17,7 @@ focused=$(i3-msg -t get_workspaces | jq '.[] | select(.focused==true)')
 screen_width=$(echo $focused | jq '.rect.width')
 screen_height=$(echo $focused | jq '.rect.height')
 offset_x=$(echo $focused | jq '.rect.x')
+offset_y=$(echo $focused | jq '.rect.y')
 
 positions=("20 80 0 0" "50 100 0 -24" "80 80 0 0"
            "0 50 24 0" "50 50 0 0"    "100 50 -24 0"
@@ -30,7 +31,7 @@ fi
 
 coordinates=(${positions[$position - 1]})
 x_coord=$((offset_x + screen_width * coordinates[0] / 100 + coordinates[2]))
-y_coord=$((screen_height * coordinates[1] / 100 + coordinates[3]))
+y_coord=$((offset_y + screen_height * coordinates[1] / 100 + coordinates[3]))
 
 xdotool mousemove "$x_coord" "$y_coord"
 
