@@ -51,7 +51,6 @@ alias e='exit'
 alias x='tmux'
 alias lg='lazygit'
 alias d='pnpm dev'
-alias supabase='node_modules/.bin/supabase'
 
 # chrome
 alias cs='google-chrome --simulate-outdated-no-au="2099/12/31" >/dev/null 2>&1 & disown && exit'
