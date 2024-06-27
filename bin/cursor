@@ -19,9 +19,9 @@ screen_height=$(echo $focused | jq '.rect.height')
 offset_x=$(echo $focused | jq '.rect.x')
 offset_y=$(echo $focused | jq '.rect.y')
 
-positions=("20 80 0 0" "50 100 0 -24" "80 80 0 0"
+positions=("10 90 0 0" "50 100 0 -24" "90 90 0 0"
            "0 50 24 0" "50 50 0 0"    "100 50 -24 0"
-           "20 20 0 0" "50 0 0 24"    "80 20 0 0")
+           "10 10 0 0" "50 0 0 24"    "90 10 0 0")
 
 position="$1"
 if ! [[ "$position" =~ ^[1-9]$ ]]; then
