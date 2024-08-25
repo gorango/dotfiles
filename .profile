@@ -52,3 +52,7 @@ export PATH="$PATH:/usr/lib/postgresql/15/bin"
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
 export SEER=~/m/seer/main
+
+# flyctl
+export FLYCTL_INSTALL="/home/go/.fly"
+export PATH="$FLYCTL_INSTALL/bin:$PATH"
