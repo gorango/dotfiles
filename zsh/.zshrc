@@ -37,6 +37,11 @@ alias vim='nvim'
 alias vi='nvim'
 alias v='nvim'
 
+# private env
+if [ -f ~/.private ]; then
+    source ~/.private
+fi
+
 # lsd
 alias ls='lsd'
 alias l='ls -a'
