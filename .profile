@@ -16,6 +16,9 @@ else
   export EDITOR='nvim'
 fi
 
+# nvim
+export PATH="$PATH:/opt/nvim-linux64/bin"
+
 # kensington trackball config
 eval "~/.device/trackball.sh"
 
