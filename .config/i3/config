@@ -134,8 +134,8 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # resize window (you can also use mod+mouse)
 mode "resize" {
-	bindsym semicolon resize shrink width 1 px or 1 ppt
-	bindsym period resize grow width 1 px or 1 ppt
+	bindsym semicolon resize shrink width 1 px
+	bindsym period resize grow width 1 px
 
 	bindsym Left resize shrink width 1 px or 1 ppt
 	bindsym Down resize grow height 1 px or 1 ppt
