@@ -202,3 +202,20 @@ bindsym Shift+Print exec --no-startup-id maim --format=png --select "/home/$USER
 # bindsym $mod+Ctrl+Print exec --no-startup-id maim --format=png | xclip -selection clipboard -t image/png
 bindsym Ctrl+Print exec --no-startup-id maim --format=png --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
 bindsym Ctrl+Shift+Print exec --no-startup-id maim --format=png --select | xclip -selection clipboard -t image/png
+
+gaps inner 2px
+# gaps outer 4px
+
+bar {
+    mode invisible
+}
+bindsym $mod+m bar mode toggle
+
+# Activate smart borders (always)
+smart_borders on
+
+# Activate smart borders (only when there are effectively no gaps)
+smart_borders no_gaps
+
+# Hide edge borders only if there is one window with no gaps
+hide_edge_borders smart_no_gaps
