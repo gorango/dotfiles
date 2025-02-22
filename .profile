@@ -1,13 +1,14 @@
 # set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
+if [ -d "$HOME/bin" ]; then
+  PATH="$HOME/bin:$PATH"
 fi
 
-if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$HOME/.local/bin:$PATH"
+if [ -d "$HOME/.local/bin" ]; then
+  PATH="$HOME/.local/bin:$PATH"
 fi
 
-export TERM='xterm-256color'
+export TERMINAL=alacritty
+export TERM=alacritty
 
 # preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -25,27 +26,19 @@ eval "~/.device/trackball.sh"
 # nix
 if [ -e /home/go/.nix-profile/etc/profile.d/nix.sh ]; then . /home/go/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
-# rust
-. "$HOME/.cargo/env"
-
 # go
 export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:`go env GOPATH`/bin
-
-# pyenv
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+export PATH=$PATH:$(go env GOPATH)/bin
 
 # fnm
 export PATH="$HOME/.local/share/fnm:$PATH"
-eval "$(fnm env --multi 2> /dev/null)"
+eval "$(fnm env --multi 2>/dev/null)"
 
 # pnpm
 export PNPM_HOME="$HOME/.local/share/pnpm"
 case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
+*":$PNPM_HOME:"*) ;;
+*) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 
 # pg
