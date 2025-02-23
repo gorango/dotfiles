@@ -1,2 +1,5 @@
-xsetroot -solid black # set background
-xset -dpms s off # disable screen timeout
+# set background
+# xsetroot -solid black
+# disable screen timeout
+# xset -dpms s off
+# xbindkeys

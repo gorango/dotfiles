@@ -12,16 +12,8 @@ function forks() {
   cd ~/f/$1
 }
 
-function repros() {
+function repr() {
   cd ~/r/$1
-}
-
-function sand() {
-  cd ~/s/$1
-}
-
-function work() {
-  cd ~/w/$1
 }
 
 function dir() {
@@ -53,10 +45,6 @@ function cloner() {
 
 function clonef() {
   forks && clone "$@" && cd $_
-}
-
-function clonew() {
-  work && clone "$@" && cd $_
 }
 
 # utilities
