@@ -15,28 +15,28 @@
 # use it if you want to catch release events instead of press events
 
 "cursor 1"
-  control + 1
+  Control + 1
 
 "cursor 2"
-  control + 2
+  Control + 2
 
 "cursor 3"
-  control + 3
+  Control + 3
 
 "cursor 4"
-  control + 4
+  Control + 4
 
 "cursor 5"
-  control + 5
+  Control + 5
 
 "cursor 6"
-  control + 6
+  Control + 6
 
 "cursor 7"
-  control + 7
+  Control + 7
 
 "cursor 8"
-  control + 8
+  Control + 8
 
 "cursor 9"
-  control + 9
+  Control + 9

@@ -398,6 +398,7 @@ ln -s ~/m/dotfiles/.xbindkeysrc ~/.xbindkeysrc
 
 ```sh
 ln -sf ~/m/dotfiles/.config/i3 ~/.config/i3
+ln -sf ~/m/dotfiles/p/1x1#000000.jpg ~/p/1x1#000000.jpg
 ln -sf ~/m/dotfiles/.config/nvim ~/.config/nvim
 ln -sf ~/m/dotfiles/.config/redshift ~/.config/redshift
 ln -sf ~/m/dotfiles/.config/lazygit/config.yml ~/.config/lazygit/config.yml
