@@ -158,6 +158,12 @@ pnpm add -g \
   tldr gtop live-server
 ```
 
+### deno
+
+```sh
+curl -fsSL https://deno.land/install.sh | sh
+```
+
 ### go
 
 ```sh

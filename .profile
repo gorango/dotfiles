@@ -34,3 +34,4 @@ esac
 # flyctl
 export FLYCTL_INSTALL="/home/g/.fly"
 export PATH="$FLYCTL_INSTALL/bin:$PATH"
+. "/home/g/.deno/env"
