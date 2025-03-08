@@ -9,6 +9,10 @@ Restore Linux Arch with EndeavourOS i3wm desktop environment.
 ```sh
 sudo pacman -Sy \
   base-devel \
+  python \
+  cmake \
+  protobuf \
+  gcc \
   distutils \
   python-setuptools \
   curl \
@@ -129,18 +133,18 @@ pipx ensurepath
 sudo pipx ensurepath --global # optional to allow pipx actions with --global argument
 ```
 
+##### packages
+
+```sh
+pipx install httpstat httpie
+```
+
 #### [poetry](https://python-poetry.org/docs/)
 
 ```sh
 curl -sSL https://install.python-poetry.org | python3 -
 mkdir $ZSH_CUSTOM/plugins/poetry
 poetry completions zsh > $ZSH_CUSTOM/plugins/poetry/_poetry
-```
-
-#### packages
-
-```sh
-pipx install httpstat httpie
 ```
 
 ### node (fnm)
@@ -171,6 +175,7 @@ sudo pacman -Sy rust
 ```sh
 cargo install htmlq # jq for html https://github.com/mgdm/htmlq
 cargo install nu # nushell https://github.com/nushell/nushell
+curl -fsSL https://bodo.run/yek.sh | bash # yek https://github.com/bodo-run/yek
 ```
 
 ### ruby (rbenv)

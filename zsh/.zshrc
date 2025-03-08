@@ -37,11 +37,6 @@ alias vim='nvim'
 alias vi='nvim'
 alias v='nvim'
 
-# secret private env
-if [ -f ~/.secret ]; then
-    source ~/.secret
-fi
-
 # lsd
 alias ls='lsd'
 alias l='ls -a'
@@ -57,6 +52,13 @@ alias x='tmux'
 alias lg='lazygit'
 alias d='pnpm dev'
 alias supabase='node_modules/.bin/supabase'
+alias clip='xclip -i -selection clipboard'
+alias ytb='yt-dlp --cookies-from-browser brave'
+
+# secret private env
+if [ -f ~/.secret ]; then
+    source ~/.secret
+fi
 
 # tmux
 if [ -n "$TMUX" ]; then
