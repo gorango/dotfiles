@@ -69,7 +69,3 @@ fi
 
 # fzf
 source <(fzf --zsh)
-
-# deno
-if [[ ":$FPATH:" != *":/home/g/.zsh/completions:"* ]]; then export FPATH="/home/g/.zsh/completions:$FPATH"; fi
-. "/home/g/.deno/env"

@@ -38,3 +38,11 @@ esac
 export FLYCTL_INSTALL="/home/g/.fly"
 export PATH="$FLYCTL_INSTALL/bin:$PATH"
 . "/home/g/.deno/env"
+
+# deno
+if [[ ":$FPATH:" != *":/home/g/.zsh/completions:"* ]]; then export FPATH="/home/g/.zsh/completions:$FPATH"; fi
+. "/home/g/.deno/env"
+
+# go pkgs
+export PATH=$PATH:$HOME/go/bin
+

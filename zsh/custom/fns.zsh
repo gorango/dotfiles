@@ -40,7 +40,7 @@ function clonem() {
 }
 
 function cloner() {
-  repros && clone "$@" && cd $_
+  repr && clone "$@" && cd $_
 }
 
 function clonef() {
