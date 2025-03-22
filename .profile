@@ -20,6 +20,9 @@ fi
 # kensington trackball config
 eval "~/.device/trackball.sh"
 
+# cursor controls
+eval "xbindkeys"
+
 # fnm
 export PATH="$HOME/.local/share/fnm:$PATH"
 eval "$(fnm env --multi 2>/dev/null)"
