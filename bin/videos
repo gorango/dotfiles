@@ -1,0 +1,15 @@
+#!/bin/bash
+img_path="$1"
+dir_path="$(dirname "$img_path")"
+
+if ls "$dir_path"/*.mp4 "$dir_path"/*.mkv "$dir_path"/*.avi 2>/dev/null | grep -q .; then
+  cd "$dir_path" || exit
+  vlc ./*.mp4 ./*.mkv ./*.avi \
+    --loop \
+    --no-video-title-show \
+    --qt-start-minimized \
+    --no-qt-error-dialogs \
+    --quiet 2>/dev/null &
+else
+  notify-send "No videos found in this folder."
+fi
