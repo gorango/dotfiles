@@ -1,0 +1,31 @@
+#!/bin/bash
+dir=""
+extra_flags=()
+save_enabled=false
+
+for arg in "$@"; do
+  if [[ "$arg" == "--save" ]]; then
+    save_enabled=true
+  elif [[ -z "$dir" && -d "$arg" ]]; then
+    dir="$arg"
+  else
+    extra_flags+=("$arg")
+  fi
+done
+
+if [[ -z "$dir" ]]; then
+  dir="$(pwd)"
+fi
+
+if $save_enabled; then
+  save_dir="$dir/fave"
+  mkdir -p "$save_dir"
+  extra_flags+=(-j "$save_dir")
+fi
+
+nohup feh -d -Y -q -B black -Z -. -r --reload 1 \
+  --action "shotwell %f" \
+  --action1 "videos %F" \
+  --action9 "setsid slides \"\$(dirname %f)\" &" \
+  "${extra_flags[@]}" \
+  "$dir" >/dev/null 2>&1 &
