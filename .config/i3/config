@@ -234,7 +234,7 @@ bindsym $mod+w exec --no-startup-id /usr/bin/firefox
 bindsym $mod+n exec --no-startup-id /usr/bin/thunar
 
 ## Screenshots
-bindsym Print exec --no-startup-id scrot ~/p/%Y-%m-%d-%T-screenshot.png && notify-send "Screenshot saved to ~/p/$(date +"%Y-%m-%d-%T")-screenshot.png"
+bindsym Print exec --no-startup-id scrot ~/p/screen/%Y-%m-%d-%T-screenshot.png && notify-send "Screenshot saved to ~/p/screen/$(date +"%Y-%m-%d-%T")-screenshot.png"
 bindsym SHift+Print exec --no-startup-id maim --format=png --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
 bindsym Ctrl+Shift+Print exec --no-startup-id maim --format=png --select | xclip -selection clipboard -t image/png
 
