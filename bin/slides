@@ -23,7 +23,7 @@ if $save_enabled; then
   extra_flags+=(-j "$save_dir")
 fi
 
-nohup feh -d -Y -q -B black -Z -. -r --reload 1 \
+nohup feh -d -Y -q -B black -Z -. -r \
   --action "shotwell %f" \
   --action1 "videos %F" \
   --action9 "setsid slides \"\$(dirname %f)\" &" \

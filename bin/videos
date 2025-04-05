@@ -1,10 +1,31 @@
 #!/bin/bash
+
+recursive=false
+
+# Parse options
+while getopts ":r" opt; do
+  case ${opt} in
+  r) recursive=true ;;
+  *)
+    echo "Usage: $0 [-r] <image_path>"
+    exit 1
+    ;;
+  esac
+done
+shift $((OPTIND - 1))
+
 img_path="$1"
 dir_path="$(dirname "$img_path")"
 
-if ls "$dir_path"/*.mp4 "$dir_path"/*.mkv "$dir_path"/*.avi 2>/dev/null | grep -q .; then
+if [ "$recursive" = true ]; then
+  files=$(find "$dir_path" -type f \( -iname "*.mp4" -o -iname "*.mkv" -o -iname "*.avi" \) 2>/dev/null)
+else
+  files=$(ls "$dir_path"/*.mp4 "$dir_path"/*.mkv "$dir_path"/*.avi 2>/dev/null)
+fi
+
+if [ -n "$files" ]; then
   cd "$dir_path" || exit
-  vlc ./*.mp4 ./*.mkv ./*.avi \
+  vlc $files \
     --loop \
     --no-video-title-show \
     --qt-start-minimized \
