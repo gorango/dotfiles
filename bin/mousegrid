@@ -1,0 +1,233 @@
+#!/usr/bin/env python3
+
+# sudo pacman -S python-gobject gtk3
+
+import gi
+gi.require_version('Gtk', '3.0')
+from gi.repository import Gtk, Gdk, GLib
+import cairo
+import subprocess
+import json
+import sys
+import signal
+
+first_keys_layout = [
+    ['semicolon', 'period', 'l', 'p', 'y'],     # Top row (left-to-right)
+    ['a', 'o', 'e', 'u', 'i'],                  # Mid row
+    ['comma', 'q', 'j', 'k', 'x']               # Bottom row
+]
+second_keys_layout = [
+    ['f', 'g', 'c', 'r', 'slash'],              # Top row (left-to-right)
+    ['d', 'h', 't', 'n', 's'],                  # Mid row
+    ['b', 'm', 'w', 'v', 'z']                   # Bottom row
+]
+
+class MouseGrid:
+    def __init__(self):
+        self.window = Gtk.Window()
+        # self.window.set_type_hint(Gdk.WindowTypeHint.DOCK)  # Overlay behavior
+        self.window.set_type_hint(Gdk.WindowTypeHint.POPUP_MENU)
+        self.window.set_decorated(False)
+        self.window.set_skip_taskbar_hint(True)
+        self.window.set_skip_pager_hint(True)
+        self.window.set_app_paintable(True)
+        self.window.set_visual(self.window.get_screen().get_rgba_visual())  # Enable RGBA
+        self.window.set_title("MouseGrid")
+        self.window.set_accept_focus(True)
+        self.window.set_focus_on_map(True)
+
+        # Get i3 workspace info
+        workspace = json.loads(subprocess.check_output(['i3-msg', '-t', 'get_workspaces']).decode())
+        focused = next(ws for ws in workspace if ws['focused'])
+        self.screen_width = focused['rect']['width']
+        self.screen_height = focused['rect']['height']
+        self.offset_x = focused['rect']['x']
+        self.offset_y = focused['rect']['y']
+
+        # Set window size and position manually instead of fullscreen
+        self.window.set_size_request(self.screen_width, self.screen_height)
+        self.window.move(self.offset_x, self.offset_y)
+        self.window.set_keep_above(True)
+
+        # Define the quadrant dimensions
+        self.first_divisions_x = 5  # Number of first key divisions horizontally
+        self.first_divisions_y = 3  # Number of first key divisions vertically
+        self.second_divisions_x = 5  # Number of second key divisions horizontally
+        self.second_divisions_y = 3  # Number of second key divisions vertically
+
+        # Calculate cells based on quadrants
+        # Make sure we have enough cells to cover the screen with our quadrant structure
+        self.cols = self.first_divisions_x * self.second_divisions_x
+        self.rows = self.first_divisions_y * self.second_divisions_y
+
+        self.first_keys = [k for row in first_keys_layout for k in row]
+        self.second_keys = [k for row in second_keys_layout for k in row]
+
+        self.key_combos = {}
+        self.waiting_for_second = None
+
+        # Calculate quadrant sizes
+        self.first_div_width = self.cols // self.first_divisions_x
+        self.first_div_height = self.rows // self.first_divisions_y
+
+        self.drawing_area = Gtk.DrawingArea()
+        self.window.add(self.drawing_area)
+        self.drawing_area.connect('draw', self.on_draw)
+
+        self.window.connect('key-press-event', self.on_key_press)
+        self.window.connect('destroy', lambda w: Gtk.main_quit())
+        self.window.connect('realize', self.on_realize)
+
+        signal.signal(signal.SIGINT, self.signal_handler)
+
+        self.create_grid()
+
+    def on_realize(self, widget):
+        win_id = self.window.get_window().get_xid()
+        subprocess.run(['i3-msg', f'[id="{win_id}"] floating enable, focus'])
+
+    def create_grid(self):
+        # Calculate cell dimensions to fill the screen exactly
+        self.cell_width = self.screen_width / self.cols
+        self.cell_height = self.screen_height / self.rows
+
+        self.grid = {}
+        self.key_combos = {}
+
+        # Map keys to screen areas using quadrants
+        for first_y, first_row in enumerate(first_keys_layout):
+            for first_x, first_key in enumerate(first_row):
+                # Calculate the starting position for this first-level quadrant
+                start_col = first_x * self.first_div_width
+                start_row = first_y * self.first_div_height
+
+                # Calculate center of each quadrant cell for second key mapping
+                for second_y, second_row in enumerate(second_keys_layout):
+                    for second_x, second_key in enumerate(second_row):
+                        # Calculate the cell within the first-level quadrant
+                        col = start_col + second_x
+                        row = start_row + second_y
+
+                        # Ensure we don't go out of bounds
+                        if col >= self.cols or row >= self.rows:
+                            continue
+
+                        combo = f"{first_key}{second_key}"
+                        first_disp = {'semicolon': ';', 'period': '.', 'comma': ','}.get(first_key, first_key)
+                        second_disp = '/' if second_key == 'slash' else second_key
+                        display = f"{first_disp}{second_disp}"
+
+                        self.grid[(col, row)] = (combo, display)
+                        self.key_combos[combo] = (col, row)
+
+    def on_draw(self, widget, cr):
+        # Draw a semi-transparent black background
+        cr.set_operator(cairo.Operator.OVER)
+        cr.set_source_rgba(0, 0, 0, 0.0)
+        cr.rectangle(0, 0, self.screen_width, self.screen_height)
+        cr.fill()
+
+        # Draw the main cell grid with white lines
+        cr.set_operator(cairo.Operator.OVER)
+        cr.set_line_width(1)
+        cr.set_source_rgb(1, 1, 1)  # White outlines
+        for row in range(self.rows):
+            for col in range(self.cols):
+                x1 = col * self.cell_width
+                y1 = row * self.cell_height
+                cr.rectangle(x1, y1, self.cell_width, self.cell_height)
+                cr.stroke()
+
+                if (col, row) in self.grid:
+                    _, display_combo = self.grid[(col, row)]
+                    cr.set_source_rgb(1, 1, 1)
+                    cr.select_font_face('Arial', cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_BOLD)
+                    cr.set_font_size(24)
+                    extents = cr.text_extents(display_combo)
+
+                    text_x = x1 + self.cell_width // 2 - extents.width / 2
+                    text_y = y1 + self.cell_height // 2 + extents.height / 2
+
+                    # Optional: background rectangle
+                    cr.set_source_rgba(0, 0, 0, 0.0)
+                    cr.rectangle(
+                        text_x - 4, 
+                        text_y - extents.height, 
+                        extents.width + 8, 
+                        extents.height + 4
+                    )
+                    cr.fill()
+
+                    cr.set_source_rgb(1, 1, 1)
+                    cr.move_to(text_x, text_y)
+                    cr.show_text(display_combo)
+
+        # Draw yellow borders around the main 5x3 quadrants
+        cr.set_line_width(3)  # Thicker lines for quadrant borders
+        cr.set_source_rgb(1, 1, 0)  # Yellow color
+
+        # Draw vertical quadrant borders
+        for i in range(1, self.first_divisions_x):
+            x = i * (self.first_div_width * self.cell_width)
+            cr.move_to(x, 0)
+            cr.line_to(x, self.screen_height)
+            cr.stroke()
+
+        # Draw horizontal quadrant borders
+        for i in range(1, self.first_divisions_y):
+            y = i * (self.first_div_height * self.cell_height)
+            cr.move_to(0, y)
+            cr.line_to(self.screen_width, y)
+            cr.stroke()
+
+    def on_key_press(self, widget, event):
+        keyname = Gdk.keyval_name(event.keyval).lower()
+        if keyname == 'escape':
+            self.quit()
+            return True
+
+        if self.waiting_for_second is None and keyname in self.first_keys:
+            self.waiting_for_second = keyname
+            return True
+
+        if self.waiting_for_second and keyname in self.second_keys:
+            second_key = 'slash' if keyname == 'slash' else keyname
+            combo = f"{self.waiting_for_second}{second_key}"
+            if combo in self.key_combos:
+                col, row = self.key_combos[combo]
+                self.move_cursor(col, row)
+            self.waiting_for_second = None
+            return True
+        return False
+
+    def move_cursor(self, col, row):
+        x = self.offset_x + (col * self.cell_width) + (self.cell_width // 2)
+        y = self.offset_y + (row * self.cell_height) + (self.cell_height // 2)
+        subprocess.run(['xdotool', 'mousemove', str(x), str(y)])
+        self.quit()
+
+    def quit(self):
+        self.window.destroy()
+        Gtk.main_quit()
+
+    def signal_handler(self, sig, frame):
+        self.quit()
+
+    def run(self):
+        self.window.show_all()
+        self.window.present()
+        self.window.grab_focus()
+        Gtk.main()
+
+def main():
+    required = ['i3-msg', 'xdotool']
+    for cmd in required:
+        if subprocess.call(['which', cmd], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL) != 0:
+            print(f"Error: {cmd} is required. Install it with 'pacman -S {cmd}'")
+            sys.exit(1)
+
+    grid = MouseGrid()
+    grid.run()
+
+if __name__ == "__main__":
+    main()
