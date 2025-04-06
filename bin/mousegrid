@@ -123,14 +123,14 @@ class MouseGrid:
     def on_draw(self, widget, cr):
         # Draw a semi-transparent black background
         cr.set_operator(cairo.Operator.OVER)
-        cr.set_source_rgba(0, 0, 0, 0.0)
+        cr.set_source_rgba(0, 0, 0, 0.1) # Background color
         cr.rectangle(0, 0, self.screen_width, self.screen_height)
         cr.fill()
 
         # Draw the main cell grid with white lines
         cr.set_operator(cairo.Operator.OVER)
-        cr.set_line_width(1)
-        cr.set_source_rgb(1, 1, 1)  # White outlines
+        cr.set_line_width(0.25)
+        cr.set_source_rgba(1, 1, 1, 0.1)  # Line color
         for row in range(self.rows):
             for col in range(self.cols):
                 x1 = col * self.cell_width
@@ -140,8 +140,7 @@ class MouseGrid:
 
                 if (col, row) in self.grid:
                     _, display_combo = self.grid[(col, row)]
-                    cr.set_source_rgb(1, 1, 1)
-                    cr.select_font_face('Arial', cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_BOLD)
+                    cr.select_font_face('Noto Sans Mono', cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_BOLD)
                     cr.set_font_size(24)
                     extents = cr.text_extents(display_combo)
 
@@ -158,13 +157,13 @@ class MouseGrid:
                     )
                     cr.fill()
 
-                    cr.set_source_rgb(1, 1, 1)
+                    cr.set_source_rgba(1, 1, 1, 1.0) # Font color
                     cr.move_to(text_x, text_y)
                     cr.show_text(display_combo)
 
-        # Draw yellow borders around the main 5x3 quadrants
-        cr.set_line_width(3)  # Thicker lines for quadrant borders
-        cr.set_source_rgb(1, 1, 0)  # Yellow color
+        # Draw borders around the main 5x3 quadrants
+        cr.set_line_width(4)  # Thicker lines for quadrant borders
+        cr.set_source_rgba(1, 1, 1, 0.75) # Line color
 
         # Draw vertical quadrant borders
         for i in range(1, self.first_divisions_x):

@@ -310,8 +310,7 @@ set $ws10 "10"
 # For modifications, it can be copied to ~/.config/picom/picom.conf or ~/.config/picom.conf
 # install picom package (yay -S picom)
 # start using default config 
-#exec_always --no-startup-id picom -b
-#
+exec_always --no-startup-id picom -b
 # for custom config:
 #exec_always --no-startup-id picom --config  ~/.config/picom.conf
 
@@ -345,7 +344,6 @@ exec --no-startup-id dex --autostart --environment i3
 # start a script to setup displays
 # uncomment the next line, use arandr to setup displays and save the file as monitor:
 exec --no-startup-id ~/.screenlayout/default.sh
-# exec --no-startup-id xbindkeys
 
 # set wallpaper
 # exec --no-startup-id sleep 2 && nitrogen --restore
@@ -548,3 +546,13 @@ bindsym $mod+t exec --no-startup-id rofi -show window \
 #exec --no-startup-id greenclip daemon>/dev/null
 #bindsym $mod+c exec --no-startup-id rofi -modi "clipboard:greenclip print" -show clipboard \
 #		-config ~/.config/rofi/rofidmenu.rasi
+
+####################
+# mousegrid config #
+####################
+
+# MouseGrid
+# bindsym $mod+Shift+h exec --no-startup-id mousegrid
+# bindsym Control+h exec --no-startup-id mousegrid
+
+for_window [title="MouseGrid"] floating enable, border none

@@ -56,7 +56,8 @@ sudo pacman -Sy \
   cloc \
   gource \
   xvfb \
-  sqlite3
+  sqlite3 \
+  picom
 ```
 
 ## Window Manager
@@ -404,6 +405,7 @@ ln -s ~/m/dotfiles/bin/find-and-replace ~/.local/bin/fr
 ln -s ~/m/dotfiles/bin/cursor ~/.local/bin/cursor
 ln -s ~/m/dotfiles/bin/videos ~/.local/bin/videos
 ln -s ~/m/dotfiles/bin/slides ~/.local/bin/slides
+ln -s ~/m/dotfiles/bin/mousegrid ~/.local/bin/mousegrid
 ln -s ~/m/dotfiles/.xbindkeysrc ~/.xbindkeysrc
 ```
 
@@ -415,4 +417,5 @@ ln -sf ~/m/dotfiles/p/1x1#000000.jpg ~/p/1x1#000000.jpg
 ln -sf ~/m/dotfiles/.config/nvim ~/.config/nvim
 ln -sf ~/m/dotfiles/.config/redshift ~/.config/redshift
 ln -sf ~/m/dotfiles/.config/lazygit/config.yml ~/.config/lazygit/config.yml
+ln -sf ~/m/dotfiles/.config/picom/config.conf ~/.config/picom/picom.conf
 ```
