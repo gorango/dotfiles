@@ -347,6 +347,7 @@ exec --no-startup-id ~/.screenlayout/default.sh
 
 # set wallpaper
 # exec --no-startup-id sleep 2 && nitrogen --restore
+# exec --no-startup-id sleep 1 && feh --bg-fill /usr/share/endeavouros/backgrounds/endeavouros-wallpaper.png
 exec --no-startup-id sleep 1 && feh --bg-fill ~/p/1x1#000000.jpg
 
 # set powersavings for display:

@@ -57,7 +57,8 @@ sudo pacman -Sy \
   gource \
   xvfb \
   sqlite3 \
-  picom
+  picom \
+  speedtest-cli
 ```
 
 ## Window Manager
