@@ -14,31 +14,31 @@
 # The release modifier is not a standard X modifier, but you can
 # use it if you want to catch release events instead of press events
 
-"cursor 1"
+"mouse 1"
   Control + 1
 
-"cursor 2"
+"mouse 2"
   Control + 2
 
-"cursor 3"
+"mouse 3"
   Control + 3
 
-"cursor 4"
+"mouse 4"
   Control + 4
 
-"cursor 5"
+"mouse 5"
   Control + 5
 
-"cursor 6"
+"mouse 6"
   Control + 6
 
-"cursor 7"
+"mouse 7"
   Control + 7
 
-"cursor 8"
+"mouse 8"
   Control + 8
 
-"cursor 9"
+"mouse 9"
   Control + 9
 
 "~/.local/bin/mousegrid"
