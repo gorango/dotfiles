@@ -23,9 +23,9 @@ if $save_enabled; then
   extra_flags+=(-j "$save_dir")
 fi
 
-nohup feh -d -Y -q -B black -Z -. -r \
+nohup feh -Y -q -B black -Z -. -r \
   --action "shotwell %f" \
   --action1 "videos %F" \
-  --action9 "setsid slides \"\$(dirname %f)\" &" \
+  --action9 "setsid slides -D 5 \"\$(dirname %f)\" &" \
   "${extra_flags[@]}" \
   "$dir" >/dev/null 2>&1 &

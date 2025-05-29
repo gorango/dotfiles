@@ -2,7 +2,6 @@
 
 recursive=false
 
-# Parse options
 while getopts ":r" opt; do
   case ${opt} in
   r) recursive=true ;;
@@ -15,22 +14,55 @@ done
 shift $((OPTIND - 1))
 
 img_path="$1"
-dir_path="$(dirname "$img_path")"
 
-if [ "$recursive" = true ]; then
-  files=$(find "$dir_path" -type f \( -iname "*.mp4" -o -iname "*.mkv" -o -iname "*.avi" \) 2>/dev/null)
-else
-  files=$(ls "$dir_path"/*.mp4 "$dir_path"/*.mkv "$dir_path"/*.avi 2>/dev/null)
+if [ -z "$img_path" ]; then
+  echo "Error: No path provided. Usage: $0 [-r] <image_path>"
+  exit 1
 fi
 
-if [ -n "$files" ]; then
+dir_path="$(dirname "$img_path")"
+
+if [ ! -d "$dir_path" ]; then
+  echo "Error: Directory '$dir_path' does not exist."
+  exit 1
+fi
+
+urlencode() {
+  local string="$1"
+  printf '%s' "$string" | python3 -c 'import urllib.parse, sys; print(urllib.parse.quote(sys.stdin.read()))'
+}
+
+files=()
+found_files=false
+
+echo "Debug: Searching in directory '$dir_path'"
+
+if [ "$recursive" = true ]; then
+  while IFS= read -r -d '' file; do
+    found_files=true
+    echo "Debug: Found file '$file'"
+    encoded_file=$(urlencode "$file")
+    files+=("file://$encoded_file")
+  done < <(find "$dir_path" -type f \( -iname "*.mp4" -o -iname "*.mkv" -o -iname "*.avi" \) -print0 2>/dev/null)
+else
+  while IFS= read -r -d '' file; do
+    found_files=true
+    echo "Debug: Found file '$file'"
+    encoded_file=$(urlencode "$file")
+    files+=("file://$encoded_file")
+  done < <(find "$dir_path" -maxdepth 1 -type f \( -iname "*.mp4" -o -iname "*.mkv" -o -iname "*.avi" \) -print0 2>/dev/null)
+fi
+
+if [ "$found_files" = true ]; then
   cd "$dir_path" || exit
-  vlc $files \
+  echo "Debug: Playing ${#files[@]} files"
+  vlc "${files[@]}" \
     --loop \
     --no-video-title-show \
     --qt-start-minimized \
     --no-qt-error-dialogs \
     --quiet 2>/dev/null &
 else
+  echo "Debug: No video files found in '$dir_path'"
   notify-send "No videos found in this folder."
 fi
