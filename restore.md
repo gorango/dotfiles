@@ -403,10 +403,11 @@ ln -s ~/m/dotfiles/bin/cht.sh ~/.local/bin/cht.sh
 ln -s ~/m/dotfiles/bin/.cht-command ~/.cht-command
 ln -s ~/m/dotfiles/bin/.cht-languages ~/.cht-languages
 ln -s ~/m/dotfiles/bin/find-and-replace ~/.local/bin/fr
-ln -s ~/m/dotfiles/bin/cursor ~/.local/bin/cursor
+ln -s ~/m/dotfiles/bin/calc ~/.local/bin/calc
+ln -s ~/m/dotfiles/bin/mouse ~/.local/bin/mouse
+ln -s ~/m/dotfiles/bin/mousegrid ~/.local/bin/mousegrid
 ln -s ~/m/dotfiles/bin/videos ~/.local/bin/videos
 ln -s ~/m/dotfiles/bin/slides ~/.local/bin/slides
-ln -s ~/m/dotfiles/bin/mousegrid ~/.local/bin/mousegrid
 ln -s ~/m/dotfiles/.xbindkeysrc ~/.xbindkeysrc
 ```
 
