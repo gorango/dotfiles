@@ -386,6 +386,9 @@ exec --no-startup-id /usr/bin/dunst
 # exec --no-startup-id sleep 7 && firefox https://github.com/endeavouros-team/endeavouros-i3wm-setup/blob/main/force-knowledge.md
 #exec --no-startup-id sleep 3 && thunar
 
+# Monitor config
+# exec --no-startup-id xrandr --output DP-3 --mode 1920x1080 --same-as eDP-1
+
 ###############
 # system tray #
 ###############
@@ -463,7 +466,7 @@ bar {
   font pango: Noto Sans Regular 10
   status_command i3blocks -c ~/.config/i3/i3blocks.conf
   position bottom
-  i3bar_command i3bar --transparency
+  # i3bar_command i3bar --transparency
   # it could be that you have no primary display set: set one (xrandr --output <output> --primary)
   # reference: https://i3wm.org/docs/userguide.html#_tray_output
   #tray_output primary
