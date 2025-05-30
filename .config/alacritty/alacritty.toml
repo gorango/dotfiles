@@ -1,0 +1,7 @@
+[terminal.shell]
+program = "/bin/zsh"
+
+[font]
+normal.family = "JetBrainsMono Nerd Font"
+normal.style = "Medium"
+size = 7
