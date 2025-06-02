@@ -307,6 +307,18 @@ sudo mv yt-dlp_linux /usr/local/bin/yt-dlp
 sudo chmod +x /usr/local/bin/yt-dlp
 ```
 
+#### [btop](https://github.com/aristocratos/btop)
+
+```sh
+sudo wget https://github.com/aristocratos/btop/releases/latest/download/btop-x86_64-linux-musl.tbz
+tar -xvf btop-x86_64-linux-musl.tbz
+cd btop-x86_64-linux-musl
+sudo make install
+cd ..
+rm -rf btop*
+ln -sf ~/m/dotfiles/.config/btop/btop.conf ~/.config/btop/btop.conf
+```
+
 ## Applications
 
 ### [brave](https://brave.com/linux/)
@@ -420,4 +432,5 @@ ln -sf ~/m/dotfiles/.config/nvim ~/.config/nvim
 ln -sf ~/m/dotfiles/.config/redshift ~/.config/redshift
 ln -sf ~/m/dotfiles/.config/lazygit/config.yml ~/.config/lazygit/config.yml
 ln -sf ~/m/dotfiles/.config/picom/config.conf ~/.config/picom/picom.conf
+ln -sf ~/m/dotfiles/.config/btop/btop.conf ~/.config/btop/btop.conf
 ```
