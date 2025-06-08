@@ -54,6 +54,8 @@ alias d='pnpm dev'
 alias supabase='node_modules/.bin/supabase'
 alias clip='xclip -i -selection clipboard'
 alias ytb='yt-dlp --cookies-from-browser brave'
+alias batt-off='systemctl --user stop battery-threshold.service'
+alias batt-on='systemctl --user start battery-threshold.service'
 
 # secret private env
 if [ -f ~/.secret ]; then

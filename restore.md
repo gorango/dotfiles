@@ -347,6 +347,22 @@ Display > Output = X11 video output (XCB)
 flatpak install flathub md.obsidian.Obsidian
 ```
 
+## Battery Health
+
+```sh
+ln -sf ~/m/dotfiles/bin/battery ~/.local/bin/battery
+mkdir -p ~/.config/systemd/user/
+ln -sf ~/m/dotfiles/.config/systemd/user/battery-threshold.service ~/.config/systemd/user/battery-threshold.service
+```
+
+```sh
+# enable service
+systemctl --user daemon-reload
+systemctl --user enable --now battery-threshold.service
+# check status
+systemctl --user status battery-threshold.service
+```
+
 ## Directories
 
 ```sh

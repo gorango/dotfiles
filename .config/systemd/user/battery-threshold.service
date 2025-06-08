@@ -1,0 +1,11 @@
+[Unit]
+Description=Battery Charge Notifier
+After=graphical.target
+
+[Service]
+ExecStart=%h/.local/bin/battery
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
+

@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+# Config
+HIGH_THRESHOLD=80
+LOW_THRESHOLD=40
+CHECK_INTERVAL=60 # seconds
+
+notified_high=false
+notified_low=false
+
+while true; do
+  percent=$(cat /sys/class/power_supply/BAT0/capacity)
+  status=$(cat /sys/class/power_supply/AC/online)
+
+  # High threshold notification
+  if [[ "$status" -eq 1 && "$percent" -ge "$HIGH_THRESHOLD" ]]; then
+    if ! $notified_high; then
+      notify-send -u critical "🔋 Battery at ${percent}%" "Unplug the charger."
+      notified_high=true
+      notified_low=false
+    fi
+  fi
+
+  # Low threshold notification
+  if [[ "$status" -eq 0 && "$percent" -le "$LOW_THRESHOLD" ]]; then
+    if ! $notified_low; then
+      notify-send -u normal "🔋 Battery low: ${percent}%" "Plug in the charger."
+      notified_low=true
+      notified_high=false
+    fi
+  fi
+
+  # Reset notifications if back in normal range
+  if [[ "$percent" -lt "$HIGH_THRESHOLD" && "$percent" -gt "$LOW_THRESHOLD" ]]; then
+    notified_high=false
+    notified_low=false
+  fi
+
+  sleep "$CHECK_INTERVAL"
+done
