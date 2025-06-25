@@ -117,6 +117,14 @@ cp nerd-fonts/JetBrainsMonoNerdFont-Medium.ttf ~/.local/share/fonts
 fc-cache -f -v
 ```
 
+### [paru](https://github.com/Morganamilo/paru)
+
+```sh
+sudo pacman -S --needed base-devel
+cloner https://aur.archlinux.org/paru.git
+makepkg -si
+```
+
 ## Languages
 
 ### python (pyenv)
