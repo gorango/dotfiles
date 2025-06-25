@@ -56,6 +56,7 @@ alias clip='xclip -i -selection clipboard'
 alias ytb='yt-dlp --cookies-from-browser brave'
 alias batt-off='systemctl --user stop battery-threshold.service'
 alias batt-on='systemctl --user start battery-threshold.service'
+alias oc='opencode'
 
 # secret private env
 if [ -f ~/.secret ]; then

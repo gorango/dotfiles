@@ -46,3 +46,5 @@ if [[ ":$FPATH:" != *":/home/g/.zsh/completions:"* ]]; then export FPATH="/home/
 # go pkgs
 export PATH=$PATH:$HOME/go/bin
 
+# opencode
+export PATH=/home/g/.opencode/bin:$PATH

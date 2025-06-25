@@ -319,6 +319,12 @@ rm -rf btop*
 ln -sf ~/m/dotfiles/.config/btop/btop.conf ~/.config/btop/btop.conf
 ```
 
+#### [opencode](https://github.com/sst/opencode)
+
+```sh
+curl -fsSL https://opencode.ai/install | bash
+```
+
 ## Applications
 
 ### [brave](https://brave.com/linux/)
