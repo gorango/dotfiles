@@ -27,6 +27,7 @@ sudo pacman -Sy \
   fd \
   lsd \
   bc \
+  bat \
   xclip \
   xdotool \
   maim \
