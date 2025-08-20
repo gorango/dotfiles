@@ -37,23 +37,24 @@ alias vim='nvim'
 alias vi='nvim'
 alias v='nvim'
 
-# lsd
-alias ls='lsd'
+# eza
+alias ls='eza'
 alias l='ls -a'
 alias la='ls -la'
-alias lt='ls --tree -I .git -I node_modules -I dist -I coverage'
+alias lt='ls -Ta --git-ignore'
 
-#tree
-alias tree='tree -I ".git|node_modules|dist|coverage|fixtures"'
+# tree
+alias tree='tree'
 
-# terminal commands
+# misc
 alias e='exit'
 alias x='tmux'
 alias lg='lazygit'
 alias d='pnpm dev'
 alias supabase='node_modules/.bin/supabase'
 alias clip='xclip -i -selection clipboard'
-alias ytb='yt-dlp --cookies-from-browser brave'
+alias ytd='yt-dlp'
+alias ytdb='yt-dlp --cookies-from-browser brave'
 alias batt-off='systemctl --user stop battery-threshold.service'
 alias batt-on='systemctl --user start battery-threshold.service'
 alias oc='opencode'

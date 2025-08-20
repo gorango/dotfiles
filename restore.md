@@ -26,6 +26,7 @@ sudo pacman -Sy \
   fzf \
   fd \
   lsd \
+  eza \
   bc \
   bat \
   xclip \
