@@ -480,12 +480,12 @@ bar {
 
   colors {
     separator            $purple
-    background           $darkgrey
-    statusline           $white
+    background           $black
+    statusline           $grey
     #                    border        bg            txt         indicator
-    focused_workspace    $mediumgrey   $grey         $darkgrey   $purple
+    focused_workspace    $mediumgrey   $mediumgrey   $black      $purple
     active_workspace     $lightblue    $mediumgrey   $darkgrey   $purple
-    inactive_workspace   $darkgrey     $darkgrey     $grey       $purple
+    inactive_workspace   $black        $black        $grey       $purple
     urgent_workspace     $urgentred    $urgentred    $white      $purple
   }
 
