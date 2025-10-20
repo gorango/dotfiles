@@ -443,6 +443,7 @@ ln -s ~/m/dotfiles/.xbindkeysrc ~/.xbindkeysrc
 ln -s ~/m/dotfiles/.device ~/.device
 ln -s ~/m/dotfiles/bin/tmux-sessionizer ~/.local/bin/tmux-sessionizer
 ln -s ~/m/dotfiles/bin/.tmux-sessionizer-targets ~/.tmux-sessionizer-targets
+ln -s ~/m/dotfiles/bin/tmux-init ~/.local/bin/tmux-init
 ln -s ~/m/dotfiles/bin/cht.sh ~/.local/bin/cht.sh
 ln -s ~/m/dotfiles/bin/.cht-command ~/.cht-command
 ln -s ~/m/dotfiles/bin/.cht-languages ~/.cht-languages

@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+WINDOW_COUNT=$(tmux display-message -p '#{session_windows}')
+
+if [[ "$WINDOW_COUNT" -gt 1 ]]; then
+  tmux display-message "ERROR: This script can only be run in a new session with a single window."
+  exit 1
+fi
+
+NVIM_PANE=$(tmux display-message -p '#{pane_id}')
+
+tmux rename-window 'dev'
+tmux split-window -h
+tmux resize-pane -t 1 -x 67%
+tmux send-keys -t "$NVIM_PANE" 'nvim' C-m
+
+tmux new-window -n 'lg'
+LAZYGIT_PANE=$(tmux display-message -p '#{pane_id}')
+tmux split-window -h
+tmux resize-pane -t 1 -x 67%
+tmux select-pane -t "$LAZYGIT_PANE"
+tmux send-keys 'lazygit' C-m
+
+tmux new-window -n 'oc'
+tmux send-keys 'opencode' C-m
+
+tmux select-window -t "$NVIM_PANE"
+tmux select-pane -t 1
+tmux send-keys -t "$NVIM_PANE" "Space" "e"
