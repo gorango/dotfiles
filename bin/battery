@@ -6,34 +6,45 @@ LOW_THRESHOLD=40
 CHECK_INTERVAL=60 # seconds
 
 notified_high=false
-notified_low=false
+last_notify_40=0
+last_notify_25=0
+last_notify_10=0
 
 while true; do
   percent=$(cat /sys/class/power_supply/BAT0/capacity)
   status=$(cat /sys/class/power_supply/AC/online)
+  current_time=$(date +%s)
 
   # High threshold notification
   if [[ "$status" -eq 1 && "$percent" -ge "$HIGH_THRESHOLD" ]]; then
     if ! $notified_high; then
       notify-send -u critical "🔋 Battery at ${percent}%" "Unplug the charger."
       notified_high=true
-      notified_low=false
     fi
   fi
 
-  # Low threshold notification
-  if [[ "$status" -eq 0 && "$percent" -le "$LOW_THRESHOLD" ]]; then
-    if ! $notified_low; then
+  # Low threshold notifications
+  if [[ "$status" -eq 0 ]]; then
+    if [[ "$percent" -le 40 && $((current_time - last_notify_40)) -ge 300 ]]; then
       notify-send -u normal "🔋 Battery low: ${percent}%" "Plug in the charger."
-      notified_low=true
-      notified_high=false
+      last_notify_40=$current_time
+    fi
+    if [[ "$percent" -le 25 && $((current_time - last_notify_25)) -ge 60 ]]; then
+      notify-send -u normal "🔋 Battery very low: ${percent}%" "Plug in the charger immediately."
+      last_notify_25=$current_time
+    fi
+    if [[ "$percent" -le 10 && $((current_time - last_notify_10)) -ge 60 ]]; then
+      notify-send -u critical -t 0 "🔋 Battery critically low: ${percent}%" "Plug in the charger NOW!"
+      last_notify_10=$current_time
     fi
   fi
 
   # Reset notifications if back in normal range
-  if [[ "$percent" -lt "$HIGH_THRESHOLD" && "$percent" -gt "$LOW_THRESHOLD" ]]; then
+  if [[ "$percent" -gt 40 ]]; then
     notified_high=false
-    notified_low=false
+    last_notify_40=0
+    last_notify_25=0
+    last_notify_10=0
   fi
 
   sleep "$CHECK_INTERVAL"
