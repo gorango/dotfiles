@@ -29,6 +29,19 @@ eval "$(z init zsh)" # zoxide
 eval "$(fnm env --use-on-cd)"
 eval "$(gh copilot alias -- zsh)" # github copilot
 
+# edit command line
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^x^e' edit-command-line
+
+# undo
+bindkey '^u' undo
+
+# chpwd hook
+chpwd() {
+  ls
+}
+
 # fix sudo - can set root shell to `/bin/zsh` with `sudo chsh`
 alias sudo='sudo '
 
