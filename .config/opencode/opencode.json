@@ -1,0 +1,48 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "autoshare": false,
+  "autoupdate": true,
+  "lsp": {},
+  "mcp": {
+    "mgrep": {
+      "type": "local",
+      "command": [
+        "mgrep",
+        "mcp"
+      ],
+      "enabled": false
+    },
+    "exa": {
+      "enabled": false,
+      "type": "remote",
+      "url": "https://mcp.exa.ai/mcp",
+      "headers": {
+        "authorization": "Bearer ${EXA_API_KEY}"
+      }
+    },
+    "deepwiki": {
+      "enabled": true,
+      "type": "remote",
+      "url": "https://mcp.deepwiki.com/sse"
+    },
+    "chrome-devtools": {
+      "enabled": false,
+      "type": "local",
+      "command": [
+        "pnpm",
+        "dlx",
+        "chrome-devtools-mcp@latest"
+      ]
+    },
+    "trigger": {
+      "enabled": false,
+      "type": "local",
+      "command": [
+        "pnpm",
+        "dlx",
+        "trigger.dev@latest",
+        "mcp"
+      ]
+    }
+  }
+}
