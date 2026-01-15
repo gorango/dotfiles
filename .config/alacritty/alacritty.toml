@@ -4,4 +4,20 @@ program = "/bin/zsh"
 [font]
 normal.family = "JetBrainsMono Nerd Font"
 normal.style = "Medium"
-size = 7
+size = 10
+
+[keyboard]
+bindings = [
+  # Default bindings for copy and paste
+  { key = "Paste", mods = "Control|Shift", action = "Paste" },
+  { key = "Copy", mods = "Control|Shift", action = "Copy" },
+
+  # Increase and decrease font size
+  { key = "+", mods = "Control", action = "IncreaseFontSize" },
+  { key = "-", mods = "Control", action = "DecreaseFontSize" },
+  { key = "0", mods = "Control", action = "ResetFontSize" },
+]
+
+[colors.primary]
+background = "#1a1b26" # Tokyo Night (Night style) background
+foreground = "#c0caf5" # Tokyo Night foreground
