@@ -23,7 +23,7 @@
     "deepwiki": {
       "enabled": true,
       "type": "remote",
-      "url": "https://mcp.deepwiki.com/sse"
+      "url": "https://mcp.deepwiki.com/mcp"
     },
     "chrome-devtools": {
       "enabled": false,
