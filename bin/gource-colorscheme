@@ -1,0 +1,88 @@
+#!/usr/bin/env python
+import subprocess
+import os
+
+# TokyoNight palette mapping
+EXTENSION_COLORS = {
+    "go": "7aa2f7",
+    "mod": "7aa2f7",
+    "rs": "f7768e",
+    "py": "e0af68",
+    "star": "e0af68",
+    "ts": "2ac3de",
+    "tsx": "2ac3de",
+    "svelte": "2ac3de",
+    "astro": "2ac3de",
+    "vue": "9ece6a",
+    "js": "e0af68",
+    "css": "e0af68",
+    "md": "9ece6a",
+    "sql": "bb9af7",
+    "proto": "bb9af7",
+    "sh": "7dcfff",
+    "justfile": "7dcfff",
+    "dockerfile": "7dcfff",
+    "docker-compose": "7dcfff",
+}
+DEFAULT_COLOR = "ffffff"
+
+
+def get_color(filepath):
+    filename = os.path.basename(filepath).lower()
+
+    if filename in EXTENSION_COLORS:
+        return EXTENSION_COLORS[filename]
+
+    for prefix in ["dockerfile", "docker-compose", "justfile"]:
+        if filename.lower().startswith(prefix):
+            return EXTENSION_COLORS[prefix]
+
+    ext = filename.split(".")[-1] if "." in filename else ""
+    return EXTENSION_COLORS.get(ext, DEFAULT_COLOR)
+
+
+def generate_log():
+    git_log_cmd = [
+        "git",
+        "log",
+        # "--all",        # Removed to ignore old, abandoned rebased history
+        "--reverse",  # Tells Git to output oldest -> newest natively
+        "--topo-order",  # Ensures parent commits always process before children
+        "--pretty=format:%ct|%an",  # Use %ct (Commit Time) instead of %at (Author Time)
+        "--name-status",
+        "--no-renames",
+        "-m",
+    ]
+
+    process = subprocess.Popen(git_log_cmd, stdout=subprocess.PIPE, text=True)
+    current_commit_info = None
+
+    # Because we used --reverse, we no longer need to store everything in memory
+    # and sort it. We can stream it directly to standard output!
+    for line in process.stdout:
+        line = line.strip()
+        if not line:
+            continue
+
+        # If the line contains a tab, it's a file status line (e.g. "A\t filepath")
+        if "\t" in line:
+            if not current_commit_info:
+                continue
+
+            # Split only on the first tab in case filenames have weird spacing
+            parts = line.split("\t", 1)
+            status = parts[0][0].upper()  # Take only 'A', 'M', or 'D'
+
+            # Git sometimes wraps weird paths in quotes, strip them
+            filepath = parts[1].strip().strip('"').lstrip("./")
+            color = get_color(filepath)
+
+            print(f"{current_commit_info}|{status}|{filepath}|{color}")
+
+        # Otherwise, if it has our delimiter, it's a commit header
+        elif "|" in line:
+            current_commit_info = line
+
+
+if __name__ == "__main__":
+    generate_log()
