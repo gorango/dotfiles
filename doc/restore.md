@@ -148,7 +148,9 @@ sudo pipx ensurepath --global # optional to allow pipx actions with --global arg
 ##### packages
 
 ```sh
-pipx install httpstat httpie
+pipx install \
+  httpstat httpie git-filter-repo \
+  terminaltexteffects
 ```
 
 #### [poetry](https://python-poetry.org/docs/)
@@ -157,6 +159,12 @@ pipx install httpstat httpie
 curl -sSL https://install.python-poetry.org | python3 -
 mkdir $ZSH_CUSTOM/plugins/poetry
 poetry completions zsh > $ZSH_CUSTOM/plugins/poetry/_poetry
+```
+
+#### [uv](https://docs.astral.sh/uv)
+
+```sh
+curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
 ### node (fnm)
@@ -193,7 +201,7 @@ sudo pacman -Sy rust
 ```sh
 cargo install htmlq # jq for html https://github.com/mgdm/htmlq
 cargo install nu # nushell https://github.com/nushell/nushell
-curl -fsSL https://bodo.run/yek.sh | bash # yek https://github.com/bodo-run/yek
+# curl -fsSL https://bodo.run/yek.sh | bash # yek https://github.com/bodo-run/yek
 ```
 
 ### ruby (rbenv)
@@ -302,6 +310,20 @@ sudo apt install stripe
 go install github.com/ericchiang/pup@latest
 ```
 
+#### lazydocker
+
+```sh
+go install github.com/jesseduffield/lazydocker@latest
+```
+
+#### [gdu](https://github.com/dundee/gdu)
+
+```
+curl -L https://github.com/dundee/gdu/releases/latest/download/gdu_linux_amd64.tgz | tar xz
+chmod +x gdu_linux_amd64
+sudo mv gdu_linux_amd64 /usr/bin/gdu
+```
+
 #### [yq](https://github.com/mikefarah/yq/#install)
 
 ```sh
@@ -361,6 +383,51 @@ Display > Output = X11 video output (XCB)
 
 ```sh
 flatpak install flathub md.obsidian.Obsidian
+```
+
+### TidalCycles
+
+#### Install
+
+##### Dependencies
+
+```sh
+sudo usermod -a -G audio $USER
+sudo mkdir -p /etc/security/limits.d
+echo '@audio - rtprio 95
+@audio - memlock unlimited' | sudo tee /etc/security/limits.d/99-realtime.conf
+# supercollider & sc3-plugins
+sudo pacman -Sy supercollider sc3-plugins
+```
+
+##### SuperDirt
+
+```sh
+git ls-remote https://github.com/musikinformatik/SuperDirt.git | grep tags | tail -n1 | awk -F/ '{print $NF}'
+```
+
+```sh
+sclang
+Quarks.checkForUpdates({Quarks.install("SuperDirt", "v1.7.4"); thisProcess.recompile()})
+```
+
+##### Tidal
+
+```sh
+sudo pacman -Sy ghc ghc-libs haskell-{tidal,bifunctors,colour,hosc,mwc-random,network,primitive,random,vector,microspec}
+```
+
+#### Start
+
+```sh
+sclang
+SuperDirt.start
+```
+
+```sh
+tidal
+# or
+tidalvim
 ```
 
 ## Battery Health
