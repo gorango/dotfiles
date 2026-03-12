@@ -175,7 +175,7 @@ fnm install --lts
 curl -fsSL https://get.pnpm.io/install.sh | sh -
 pnpm add -g \
   nodemon pm2 turbo typescript eslint @antfu/ni diff-so-fancy \
-  tldr gtop live-server
+  tldr gtop live-server osgrep
 ```
 
 ### deno
@@ -521,6 +521,7 @@ ln -s ~/m/dotfiles/bin/mousegrid ~/.local/bin/mousegrid
 ln -s ~/m/dotfiles/bin/videos ~/.local/bin/videos
 ln -s ~/m/dotfiles/bin/slides ~/.local/bin/slides
 ln -s ~/m/dotfiles/.xbindkeysrc ~/.xbindkeysrc
+ln -sf ~/m/dotfiles/.gitignore_global ~/
 ```
 
 ### `$HOME/.config`

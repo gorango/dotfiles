@@ -4,16 +4,16 @@
   "autoupdate": true,
   "lsp": {},
   "mcp": {
-    "mgrep": {
+    "osgrep": {
       "type": "local",
       "command": [
-        "mgrep",
+        "osgrep",
         "mcp"
       ],
       "enabled": false
     },
     "exa": {
-      "enabled": false,
+      "enabled": true,
       "type": "remote",
       "url": "https://mcp.exa.ai/mcp",
       "headers": {
