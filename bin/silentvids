@@ -1,0 +1,18 @@
+#!/bin/bash
+file="$1"
+dir=$(dirname "$file")
+
+# Supported extensions
+exts="gif mp4 mkv avi mov webm flv m4v"
+
+# Find files in dir, case-insensitive, sorted
+mapfile -t files < <(find "$dir" -maxdepth 1 -type f \( $(printf -- '-iname "*.%s" -o ' $exts | sed 's/ -o $//') \) | sort)
+
+# Find index of $file in list
+start_index=0
+for i in "${!files[@]}"; do
+  [[ "${files[i]}" == "$file" ]] && start_index=$i && break
+done
+
+# Run mpv starting from selected file, loop playlist
+setsid mpv --quiet "${files[@]}" &

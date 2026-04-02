@@ -1,12 +1,18 @@
 #!/bin/bash
 
+# --- Suggestion 3: Add a dependency check ---
+if ! command -v python3 &>/dev/null; then
+  echo "Error: python3 is not installed, but is required for URL encoding." >&2
+  exit 1
+fi
+
 recursive=false
 
 while getopts ":r" opt; do
   case ${opt} in
   r) recursive=true ;;
   *)
-    echo "Usage: $0 [-r] <image_path>"
+    echo "Usage: $0 [-r] <any_file_in_target_dir>"
     exit 1
     ;;
   esac
@@ -16,7 +22,7 @@ shift $((OPTIND - 1))
 img_path="$1"
 
 if [ -z "$img_path" ]; then
-  echo "Error: No path provided. Usage: $0 [-r] <image_path>"
+  echo "Error: No path provided. Usage: $0 [-r] <any_file_in_target_dir>"
   exit 1
 fi
 
@@ -27,9 +33,22 @@ if [ ! -d "$dir_path" ]; then
   exit 1
 fi
 
+# Store the original working directory for the copy feature
+original_dir="$(pwd)"
+export VIDEOS_COPY_DEST="$original_dir"
+
+# Create a marker file path for communication with Lua extension
+marker_file="/tmp/videos_copy_$$.marker"
+export VIDEOS_COPY_MARKER="$marker_file"
+
 urlencode() {
   local string="$1"
   printf '%s' "$string" | python3 -c 'import urllib.parse, sys; print(urllib.parse.quote(sys.stdin.read()))'
+}
+
+urldecode() {
+  local string="$1"
+  printf '%s' "$string" | python3 -c 'import urllib.parse, sys; print(urllib.parse.unquote(sys.stdin.read()))'
 }
 
 files=()
@@ -37,32 +56,105 @@ found_files=false
 
 echo "Debug: Searching in directory '$dir_path'"
 
-if [ "$recursive" = true ]; then
-  while IFS= read -r -d '' file; do
-    found_files=true
-    echo "Debug: Found file '$file'"
-    encoded_file=$(urlencode "$file")
-    files+=("file://$encoded_file")
-  done < <(find "$dir_path" -type f \( -iname "*.mp4" -o -iname "*.mkv" -o -iname "*.avi" \) -print0 2>/dev/null)
-else
-  while IFS= read -r -d '' file; do
-    found_files=true
-    echo "Debug: Found file '$file'"
-    encoded_file=$(urlencode "$file")
-    files+=("file://$encoded_file")
-  done < <(find "$dir_path" -maxdepth 1 -type f \( -iname "*.mp4" -o -iname "*.mkv" -o -iname "*.avi" \) -print0 2>/dev/null)
+# --- Suggestion 1: Build find arguments dynamically to avoid code duplication ---
+find_args=("$dir_path")
+if ! $recursive; then
+  find_args+=(-maxdepth 1)
 fi
+find_args+=(-type f \( -iname "*.mp4" -o -iname "*.mkv" -o -iname "*.avi" -o -iname "*.m4a" \) -print0)
 
-if [ "$found_files" = true ]; then
-  cd "$dir_path" || exit
+while IFS= read -r -d '' file; do
+  found_files=true
+  echo "Debug: Found file '$file'"
+  encoded_file=$(urlencode "$file")
+  files+=("file://$encoded_file")
+done < <(find "${find_args[@]}" 2>/dev/null)
+
+if $found_files; then
   echo "Debug: Playing ${#files[@]} files"
+  echo "Debug: Copy destination: $original_dir"
+  echo "Debug: In VLC, use menu 'View > Copy video to destination' (or configure hotkey 'S' in VLC preferences)"
+  
+  # Get the directory where this script is located for the Lua extension
+  script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+  
+  # Create a temporary config directory for VLC
+  vlc_config_dir=$(mktemp -d)
+  
+  # Copy the Lua extension to VLC's extensions directory
+  mkdir -p "$vlc_config_dir/lua/extensions"
+  cp "$script_dir/.videos-copy-extension.lua" "$vlc_config_dir/lua/extensions/"
+  
+  # Remove any old marker file
+  rm -f "$marker_file"
+  
+  # Launch VLC with our custom configuration
   vlc "${files[@]}" \
     --loop \
     --no-video-title-show \
     --qt-start-minimized \
     --no-qt-error-dialogs \
-    --quiet 2>/dev/null &
+    --quiet \
+    --extraintf lua \
+    --lua-config "$vlc_config_dir/lua" \
+    --config "$vlc_config_dir" \
+    --key-screenshot "" \
+    2>/dev/null &
+  
+  vlc_pid=$!
+  
+  # Cleanup function
+  cleanup() {
+    rm -rf "$vlc_config_dir" "$marker_file" 2>/dev/null
+  }
+  
+  # Monitor for copy requests from Lua extension
+  (
+    # Wait for VLC to start
+    sleep 1
+    
+    while kill -0 $vlc_pid 2>/dev/null; do
+      # Check if marker file exists (Lua requested a copy)
+      if [ -f "$marker_file" ]; then
+        # Read the file URI from marker
+        file_uri=$(cat "$marker_file" 2>/dev/null)
+        rm -f "$marker_file"
+        
+        if [ -n "$file_uri" ]; then
+          # Decode file:// URL
+          file_path="$file_uri"
+          if [[ "$file_path" == file://* ]]; then
+            file_path="${file_path:7}"
+          fi
+          
+          # URL decode
+          file_path=$(urldecode "$file_path")
+          
+          if [ -f "$file_path" ]; then
+            filename=$(basename "$file_path")
+            dest_path="$original_dir/$filename"
+            
+            # Copy the file
+            if cp "$file_path" "$dest_path" 2>/dev/null; then
+              notify-send "Video copied" "Copied $filename to current directory" 2>/dev/null || echo "Copied: $filename"
+            else
+              notify-send "Copy failed" "Could not copy $filename" 2>/dev/null || echo "Failed to copy: $filename"
+            fi
+          fi
+        fi
+      fi
+      
+      sleep 0.5
+    done
+    
+    cleanup
+  ) &
+  
+  # Wait for VLC to exit
+  wait $vlc_pid 2>/dev/null
+  cleanup
+  
 else
   echo "Debug: No video files found in '$dir_path'"
-  notify-send "No videos found in this folder."
+  notify-send "No videos found in this folder." 2>/dev/null || echo "No videos found in this folder."
 fi

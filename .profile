@@ -1,27 +1,33 @@
 export TERMINAL=alacritty
 export TERM=alacritty
 
+export BROWSER=brave
+export EDITOR=nvim
+
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ]; then
-  PATH="$HOME/bin:$PATH"
+    PATH="$HOME/bin:$PATH"
 fi
 
 if [ -d "$HOME/.local/bin" ]; then
-  PATH="$HOME/.local/bin:$PATH"
+    PATH="$HOME/.local/bin:$PATH"
 fi
 
 # preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='nvim'
+    export EDITOR='nvim'
 else
-  export EDITOR='nvim'
+    export EDITOR='nvim'
 fi
 
 # kensington trackball config
-eval "~/.device/trackball.sh"
+eval "$HOME/.device/trackball.sh"
 
 # cursor controls
 eval "xbindkeys"
+
+# nvim
+export PATH=$HOME/.local/share/nvim/mason/bin:$PATH
 
 # fnm
 export PATH="$HOME/.local/share/fnm:$PATH"
@@ -46,5 +52,12 @@ if [[ ":$FPATH:" != *":/home/g/.zsh/completions:"* ]]; then export FPATH="/home/
 # go pkgs
 export PATH=$PATH:$HOME/go/bin
 
+# rust
+export PATH=$PATH:$HOME/.cargo/bin
+
 # opencode
 export PATH=/home/g/.opencode/bin:$PATH
+
+# gcloud
+if [ -f '/home/g/d/google-cloud-sdk/path.zsh.inc' ]; then . '/home/g/d/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '/home/g/d/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/g/d/google-cloud-sdk/completion.zsh.inc'; fi

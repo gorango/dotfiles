@@ -24,8 +24,9 @@ if $save_enabled; then
 fi
 
 nohup feh -Y -q -B black -Z -. -r \
-  --action "shotwell %f" \
-  --action1 "videos %F" \
-  --action9 "setsid slides -D 5 \"\$(dirname %f)\" &" \
+  --action 'shotwell "%f"' \
+  --action1 'videos "%f"' \
+  --action2 'cd "$(dirname "%f")" && setopt nullglob & setsid mpv --loop-playlist *.{gif,mp4,mkv,avi,mov,webm,flv,m4v} &' \
+  --action9 'cd "$(dirname "%f")" && slides -D 5 . &' \
   "${extra_flags[@]}" \
   "$dir" >/dev/null 2>&1 &

@@ -27,7 +27,6 @@ source $HOME/.profile
 
 eval "$(z init zsh)" # zoxide
 eval "$(fnm env --use-on-cd)"
-eval "$(gh copilot alias -- zsh)" # github copilot
 
 # edit command line
 autoload -Uz edit-command-line
@@ -63,13 +62,14 @@ alias tree='tree'
 alias e='exit'
 alias x='tmux'
 alias lg='lazygit'
-alias d='pnpm dev'
+alias d='npm run dev'
 alias supabase='node_modules/.bin/supabase'
 alias clip='xclip -i -selection clipboard'
 alias ytd='yt-dlp'
 alias ytdb='yt-dlp --cookies-from-browser brave'
 alias batt-off='systemctl --user stop battery-threshold.service'
 alias batt-on='systemctl --user start battery-threshold.service'
+
 alias oc='opencode'
 
 # secret private env
