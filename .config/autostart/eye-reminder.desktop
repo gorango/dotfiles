@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Eye Break Reminder
+Comment=Sends a notification every 20 minutes to rest your eyes
+Exec=/home/your-username/.config/i3/scripts/eye-reminder.sh
+Icon=dialog-information
+Terminal=false
+Type=Application
+Categories=Utility;
