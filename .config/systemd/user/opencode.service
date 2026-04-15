@@ -1,0 +1,10 @@
+[Unit]
+Description=Opencode Server
+After=graphical.target
+
+[Service]
+ExecStart=/home/g/.opencode/bin/opencode serve --hostname 0.0.0.0 --port 4096
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

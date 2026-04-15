@@ -534,4 +534,5 @@ ln -sf ~/m/dotfiles/.config/redshift ~/.config/redshift
 ln -sf ~/m/dotfiles/.config/lazygit/config.yml ~/.config/lazygit/config.yml
 ln -sf ~/m/dotfiles/.config/picom/config.conf ~/.config/picom/picom.conf
 ln -sf ~/m/dotfiles/.config/btop/btop.conf ~/.config/btop/btop.conf
+ln -sf ~/m/dotfiles/.config/systemd ~/.config
 ```
