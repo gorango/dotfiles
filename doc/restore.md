@@ -357,6 +357,14 @@ ln -sf ~/m/dotfiles/.config/btop/btop.conf ~/.config/btop/btop.conf
 curl -fsSL https://opencode.ai/install | bash
 ```
 
+#### dictate
+
+```sh
+git clone git@github.com:gorango/dictate.git
+cd dictate
+bash install.sh
+```
+
 ## Applications
 
 ### [brave](https://brave.com/linux/)
