@@ -53,7 +53,7 @@ function show_volume_notif {
 function show_brightness_notif {
   brightness=$(get_brightness)
   get_brightness_icon
-  dunstify -t 1000 -r 2593 -u normal "$brightness_icon $brightness%" -h int:value:$brightness -h string:hlcolor:$bar_color
+  dunstify -t 1000 -r 2593 -u normal "$brightness_icon $brightness%" -h "int:value:$brightness" -h "string:hlcolor:$bar_color"
 }
 
 # Main function - Takes user input, "volume_up", "volume_down", "brightness_up", or "brightness_down"
