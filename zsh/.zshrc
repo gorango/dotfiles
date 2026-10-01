@@ -84,5 +84,8 @@ else
 	bindkey -s ^f 'tmux-sessionizer\n'
 fi
 
+# bun completions
+[ -s "$HOME/.bun/_bun" ] && . "$HOME/.bun/_bun"
+
 # fzf
 source <(fzf --zsh)

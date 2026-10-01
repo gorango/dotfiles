@@ -41,23 +41,32 @@ case ":$PATH:" in
 esac
 
 # flyctl
-export FLYCTL_INSTALL="/home/g/.fly"
+export FLYCTL_INSTALL="$HOME/.fly"
 export PATH="$FLYCTL_INSTALL/bin:$PATH"
-. "/home/g/.deno/env"
+. "$HOME/.deno/env"
 
 # deno
-if [[ ":$FPATH:" != *":/home/g/.zsh/completions:"* ]]; then export FPATH="/home/g/.zsh/completions:$FPATH"; fi
-. "/home/g/.deno/env"
+if [[ ":$FPATH:" != *":$HOME/.zsh/completions:"* ]]; then export FPATH="$HOME/.zsh/completions:$FPATH"; fi
+. "$HOME/.deno/env"
 
 # go pkgs
-export PATH=$PATH:$HOME/go/bin
+export PATH=$HOME/go/bin:$PATH
 
 # rust
 export PATH=$PATH:$HOME/.cargo/bin
 
 # opencode
-export PATH=/home/g/.opencode/bin:$PATH
+export PATH=$HOME/.opencode/bin:$PATH
 
 # gcloud
-if [ -f '/home/g/d/google-cloud-sdk/path.zsh.inc' ]; then . '/home/g/d/google-cloud-sdk/path.zsh.inc'; fi
-if [ -f '/home/g/d/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/g/d/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f "$HOME/d/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/d/google-cloud-sdk/path.zsh.inc"; fi
+if [ -f "$HOME/d/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/d/google-cloud-sdk/completion.zsh.inc"; fi
+
+# bun bin
+export PATH="$HOME/.bun/bin:$PATH"
+
+# memo
+export PATH="$HOME/.optmem:$PATH"
+
+# pi
+export PATH="$HOME/.local/share/fnm/node-versions/v24.3.0/installation/bin:$PATH"
