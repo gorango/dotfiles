@@ -387,7 +387,11 @@ exec --no-startup-id /usr/bin/dunst
 #exec --no-startup-id sleep 3 && thunar
 
 # Monitor config
-# exec --no-startup-id xrandr --output DP-3 --mode 1920x1080 --same-as eDP-1
+exec --no-startup-id xrandr --output DP-3 --mode 1920x1080 --same-as eDP-1
+
+# Reminder to rest the eyes
+# exec --no-startup-id ~/.config/i3/scripts/eye-reminder.sh &
+# exec --no-startup-id sh -c '~/.config/i3/scripts/eye-reminder.sh > /tmp/eye-reminder.log 2>&1 &'
 
 ###############
 # system tray #

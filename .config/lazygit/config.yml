@@ -52,9 +52,10 @@ gui:
   animateExplosion: true # shows an explosion animation when nuking the working tree
   portraitMode: "auto" # one of 'auto' | 'never' | 'always'
 git:
-  pagers:
+  diffRenderers:
     - colorArg: always
       useConfig: false
+      type: rawGit
   commit:
     signOff: false
   merging:
@@ -105,6 +106,12 @@ quitOnTopLevelReturn: false
 disableStartupPopups: false
 notARepository: "prompt" # one of: 'prompt' | 'create' | 'skip' | 'quit'
 promptToReturnFromSubprocess: true # display confirmation when subprocess terminates
+customCommands:
+  - key: '<c-f>'
+    description: 'Open tmux sessionizer'
+    command: 'sh -c "[ -n \"$TMUX\" ] && tmux neww tmux-sessionizer || tmux-sessionizer"'
+    context: 'global'
+    output: terminal
 keybinding:
   universal:
     quit: "q"
@@ -217,7 +224,7 @@ keybinding:
     pasteCommits: "v"
     tagCommit: "T"
     checkoutCommit: "<space>"
-    resetCherryPick: "<c-R>"
+    # resetCherryPick: "<c-R>"
     copyCommitMessageToClipboard: "<c-y>"
     openLogMenu: "<c-l>"
     viewBisectOptions: "b"
