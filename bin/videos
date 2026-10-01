@@ -6,7 +6,9 @@ if ! command -v python3 &>/dev/null; then
   exit 1
 fi
 
-recursive=false
+# Recurse by default, like slides does with feh -r (-r kept as a no-op
+# so existing callers passing it don't break).
+recursive=true
 
 while getopts ":r" opt; do
   case ${opt} in
@@ -57,11 +59,17 @@ found_files=false
 echo "Debug: Searching in directory '$dir_path'"
 
 # --- Suggestion 1: Build find arguments dynamically to avoid code duplication ---
+# Full gamut of video extensions, kept in sync with the mpv action in slides.
+video_exts=(3g2 3gp asf avi divx f4v flv gif m2ts m2v m4a m4v mkv mov mp4 mpe mpeg mpg mts mxf ogm ogv rm rmvb ts vob webm wmv)
 find_args=("$dir_path")
 if ! $recursive; then
   find_args+=(-maxdepth 1)
 fi
-find_args+=(-type f \( -iname "*.mp4" -o -iname "*.mkv" -o -iname "*.avi" -o -iname "*.m4a" \) -print0)
+find_args+=(-type f \( -iname "*.${video_exts[0]}")
+for ext in "${video_exts[@]:1}"; do
+  find_args+=(-o -iname "*.$ext")
+done
+find_args+=(\) -print0)
 
 while IFS= read -r -d '' file; do
   found_files=true
@@ -76,7 +84,9 @@ if $found_files; then
   echo "Debug: In VLC, use menu 'View > Copy video to destination' (or configure hotkey 'S' in VLC preferences)"
   
   # Get the directory where this script is located for the Lua extension
-  script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+  # Resolve symlinks: this script is typically invoked via a
+  # ~/.local/bin symlink, while the lua extension lives next to the real file.
+  script_dir="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")" && pwd)"
   
   # Create a temporary config directory for VLC
   vlc_config_dir=$(mktemp -d)

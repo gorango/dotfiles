@@ -24,9 +24,9 @@ if $save_enabled; then
 fi
 
 nohup feh -Y -q -B black -Z -. -r \
-  --action 'shotwell "%f"' \
-  --action1 'videos "%f"' \
-  --action2 'cd "$(dirname "%f")" && setopt nullglob & setsid mpv --loop-playlist *.{gif,mp4,mkv,avi,mov,webm,flv,m4v} &' \
-  --action9 'cd "$(dirname "%f")" && slides -D 5 . &' \
+  --action 'shotwell %F' \
+  --action1 'videos %F' \
+  --action2 'cd "$(dirname %F)" && setsid mpv --loop-playlist *.3g2 *.3gp *.asf *.avi *.divx *.f4v *.flv *.gif *.m2ts *.m2v *.m4a *.m4v *.mkv *.mov *.mp4 *.mpe *.mpeg *.mpg *.mts *.mxf *.ogm *.ogv *.rm *.rmvb *.ts *.vob *.webm *.wmv &' \
+  --action9 'cd "$(dirname %F)" && slides -D 5 . &' \
   "${extra_flags[@]}" \
   "$dir" >/dev/null 2>&1 &
