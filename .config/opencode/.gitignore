@@ -2,3 +2,6 @@ node_modules
 tool
 providers
 *lock*
+
+# Holds the local server auth password
+service.json
