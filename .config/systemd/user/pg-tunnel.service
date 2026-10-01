@@ -1,0 +1,12 @@
+[Unit]
+Description=Postgres tunnel to tw-pg
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+ExecStart=/usr/bin/ssh -i %h/.ssh/twain-hetzner -o ExitOnForwardFailure=yes -o ServerAliveInterval=30 -o ServerAliveCountMax=3 -N -L 5433:10.0.0.2:5432 root@100.76.41.92
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target
