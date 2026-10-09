@@ -106,12 +106,6 @@ quitOnTopLevelReturn: false
 disableStartupPopups: false
 notARepository: "prompt" # one of: 'prompt' | 'create' | 'skip' | 'quit'
 promptToReturnFromSubprocess: true # display confirmation when subprocess terminates
-customCommands:
-  - key: '<c-f>'
-    description: 'Open tmux sessionizer'
-    command: 'sh -c "[ -n \"$TMUX\" ] && tmux neww tmux-sessionizer || tmux-sessionizer"'
-    context: 'global'
-    output: terminal
 keybinding:
   universal:
     quit: "q"
@@ -136,8 +130,7 @@ keybinding:
     jumpToBlock: ["1", "2", "3", "4", "5"] # goto the Nth block / panel
     nextMatch: "n"
     prevMatch: "N"
-    optionMenu: "" # show help menu
-    optionMenu-alt1: "?" # show help menu
+    optionMenu: ["?"] # show help menu
     select: "<space>"
     goInto: "<enter>"
     openRecentRepos: "<c-r>"
@@ -224,7 +217,7 @@ keybinding:
     pasteCommits: "v"
     tagCommit: "T"
     checkoutCommit: "<space>"
-    # resetCherryPick: "<c-R>"
+    resetCherryPick: "<ctrl-r>"
     copyCommitMessageToClipboard: "<c-y>"
     openLogMenu: "<c-l>"
     viewBisectOptions: "b"
