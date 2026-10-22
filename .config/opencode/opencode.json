@@ -3,6 +3,9 @@
     "share": "manual",
     "autoupdate": true,
     "lsp": {},
+    "plugins": [
+        "/home/g/.config/opencode/plugins/oracle"
+    ],
     "mcp": {
         "servers": {
             "exa": {
