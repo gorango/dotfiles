@@ -13,12 +13,12 @@
         "thinking": "hide",
         "markdown": "source",
         "tps": true,
-        "image_preview": false
+        "image_preview": true,
+        "verbosity": "low",
+        "grouping": "auto",
+        "permissions": "autoaccept"
     },
     "animations": true,
-    "hints": {
-        "onboarding": false
-    },
     "tabs": {
         "layout": "vertical",
         "enabled": true,
@@ -26,8 +26,9 @@
         "scope": "cwd"
     },
     "attention": {
-        "enabled": true,
-        "volume": 0.8
+        "volume": 0.8,
+        "sound": true,
+        "notifications": true
     },
     "keybinds": {
         "session.tab.next": "ctrl+pagedown",

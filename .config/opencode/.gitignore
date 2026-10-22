@@ -1,7 +1,7 @@
 node_modules
 tool
 providers
-*lock*
+package-lock.json
 
 # Holds the local server auth password
 service.json

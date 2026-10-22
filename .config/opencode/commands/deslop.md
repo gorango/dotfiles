@@ -3095,6 +3095,6 @@ Origins of specific principles referenced in this document.
 
 ---
 
-*This document is designed to be dropped into your `~/.claude/commands/` and/or `~/.opencode/commands` folders. Run `/deslop [file-or-directory]` to analyze your code against these principles and let the agent fix any slop it detects.*
+*This document is designed to be dropped into your `~/.config/opencode/commands/` folder. Run `/deslop [file-or-directory]` to analyze your code against these principles and let the agent fix any slop it detects.*
 
 
