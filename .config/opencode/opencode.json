@@ -46,15 +46,6 @@
                     "mcp"
                 ],
                 "disabled": true
-            },
-            "codegraph": {
-                "type": "local",
-                "command": [
-                    "codegraph",
-                    "serve",
-                    "--mcp"
-                ],
-                "disabled": false
             }
         }
     }
